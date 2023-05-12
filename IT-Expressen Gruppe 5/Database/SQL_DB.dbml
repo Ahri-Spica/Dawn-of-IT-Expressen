@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="2-sem-gr-5" Class="SQL_DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ucl-jtm-sqlserver.database.windows.net;Initial Catalog=2-sem-gr-5;Persist Security Info=True;User ID=2-sem-gr-5-login" SettingsObjectName="IT_Expressen_Gruppe_5.Properties.Settings" SettingsPropertyName="_2_sem_gr_5ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="Admin_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Bruger_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Bruger_Admin" Member="Bruger" ThisKey="Bruger_Id" OtherKey="Bruger_Id" Type="Bruger" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bruger" Member="Brugers">
+    <Type Name="Bruger">
+      <Column Name="Bruger_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Navn" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Adresse" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TelefoneNr" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Bruger_Admin" Member="Admins" ThisKey="Bruger_Id" OtherKey="Bruger_Id" Type="Admin" />
+      <Association Name="Bruger_konsulent" Member="konsulents" ThisKey="Bruger_Id" OtherKey="bruger_Id" Type="konsulent" />
+      <Association Name="Bruger_Kunde" Member="Kundes" ThisKey="Bruger_Id" OtherKey="Bruger_Id" Type="Kunde" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EkspertiseOmråde" Member="EkspertiseOmrådes">
+    <Type Name="EkspertiseOmråde">
+      <Column Name="EkspertiseOmrådeId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="område" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="EkspertiseOmråde_specifikationer" Member="specifikationers" ThisKey="EkspertiseOmrådeId" OtherKey="ekspertiseområdeID" Type="specifikationer" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Fakture" Member="Faktures">
+    <Type Name="Fakture">
+      <Column Name="Fakture_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Projekt_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Konsulent_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Timeløn" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Dato" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Antal_Timer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Instalationer" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="konsulent_Fakture" Member="konsulent" ThisKey="Konsulent_Id" OtherKey="Konsulent_Id" Type="konsulent" IsForeignKey="true" />
+      <Association Name="Projekt_Fakture" Member="Projekt" ThisKey="Projekt_Id" OtherKey="Projekt_Id" Type="Projekt" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Invitation" Member="Invitations">
+    <Type Name="Invitation">
+      <Column Name="Invitation_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Projekt_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Kunde_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Konsulent_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="konsulent_Invitation" Member="konsulent" ThisKey="Konsulent_Id" OtherKey="Konsulent_Id" Type="konsulent" IsForeignKey="true" />
+      <Association Name="Kunde_Invitation" Member="Kunde" ThisKey="Kunde_Id" OtherKey="Kunde_Id" Type="Kunde" IsForeignKey="true" />
+      <Association Name="Projekt_Invitation" Member="Projekt" ThisKey="Projekt_Id" OtherKey="Projekt_Id" Type="Projekt" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KodeSprog" Member="KodeSprogs">
+    <Type Name="KodeSprog">
+      <Column Name="KodeSprogID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sprog" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="KodeSprog_specifikationer" Member="specifikationers" ThisKey="KodeSprogID" OtherKey="kodesprogID" Type="specifikationer" />
+    </Type>
+  </Table>
+  <Table Name="dbo.konsulent" Member="konsulents">
+    <Type Name="konsulent">
+      <Column Name="Konsulent_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="bruger_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SpecifikationerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="konsulent_Fakture" Member="Faktures" ThisKey="Konsulent_Id" OtherKey="Konsulent_Id" Type="Fakture" />
+      <Association Name="konsulent_Invitation" Member="Invitations" ThisKey="Konsulent_Id" OtherKey="Konsulent_Id" Type="Invitation" />
+      <Association Name="konsulent_Projekt" Member="Projekts" ThisKey="Konsulent_Id" OtherKey="Konsulent_Id" Type="Projekt" />
+      <Association Name="Bruger_konsulent" Member="Bruger" ThisKey="bruger_Id" OtherKey="Bruger_Id" Type="Bruger" IsForeignKey="true" />
+      <Association Name="specifikationer_konsulent" Member="specifikationer" ThisKey="SpecifikationerID" OtherKey="SpecifikationerID" Type="specifikationer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Kunde" Member="Kundes">
+    <Type Name="Kunde">
+      <Column Name="Kunde_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Bruger_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Kunde_Invitation" Member="Invitations" ThisKey="Kunde_Id" OtherKey="Kunde_Id" Type="Invitation" />
+      <Association Name="Kunde_Projekt" Member="Projekts" ThisKey="Kunde_Id" OtherKey="Kunde_id" Type="Projekt" />
+      <Association Name="Bruger_Kunde" Member="Bruger" ThisKey="Bruger_Id" OtherKey="Bruger_Id" Type="Bruger" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Projekt" Member="Projekts">
+    <Type Name="Projekt">
+      <Column Name="Projekt_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Kunde_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Konsulent_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Navn" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StartDato" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Beskrivelse" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="krav" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProjektStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Timeopgørelse" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="chat" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="SlutDato" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Projekt_Fakture" Member="Faktures" ThisKey="Projekt_Id" OtherKey="Projekt_Id" Type="Fakture" />
+      <Association Name="Projekt_Invitation" Member="Invitations" ThisKey="Projekt_Id" OtherKey="Projekt_Id" Type="Invitation" />
+      <Association Name="konsulent_Projekt" Member="konsulent" ThisKey="Konsulent_Id" OtherKey="Konsulent_Id" Type="konsulent" IsForeignKey="true" />
+      <Association Name="Kunde_Projekt" Member="Kunde" ThisKey="Kunde_id" OtherKey="Kunde_Id" Type="Kunde" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.specifikationer" Member="specifikationers">
+    <Type Name="specifikationer">
+      <Column Name="SpecifikationerID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ekspertiseområdeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="teknologiID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="kodesprogID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="specifikationer_konsulent" Member="konsulents" ThisKey="SpecifikationerID" OtherKey="SpecifikationerID" Type="konsulent" />
+      <Association Name="EkspertiseOmråde_specifikationer" Member="EkspertiseOmråde" ThisKey="ekspertiseområdeID" OtherKey="EkspertiseOmrådeId" Type="EkspertiseOmråde" IsForeignKey="true" />
+      <Association Name="KodeSprog_specifikationer" Member="KodeSprog" ThisKey="kodesprogID" OtherKey="KodeSprogID" Type="KodeSprog" IsForeignKey="true" />
+      <Association Name="Teknologi_specifikationer" Member="Teknologi" ThisKey="teknologiID" OtherKey="TeknologiID" Type="Teknologi" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.sysdiagrams" Member="sysdiagrams">
+    <Type Name="sysdiagram">
+      <Column Name="name" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="principal_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="diagram_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="version" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="definition" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Teknologi" Member="Teknologis">
+    <Type Name="Teknologi">
+      <Column Name="TeknologiID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="teknologier" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Teknologi_specifikationer" Member="specifikationers" ThisKey="TeknologiID" OtherKey="teknologiID" Type="specifikationer" />
+    </Type>
+  </Table>
+</Database>

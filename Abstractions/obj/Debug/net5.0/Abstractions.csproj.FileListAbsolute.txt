@@ -1,0 +1,12 @@
+C:\Git\Repos\IT-Express\Abstractions\bin\Debug\net5.0\Abstractions.deps.json
+C:\Git\Repos\IT-Express\Abstractions\bin\Debug\net5.0\Abstractions.dll
+C:\Git\Repos\IT-Express\Abstractions\bin\Debug\net5.0\ref\Abstractions.dll
+C:\Git\Repos\IT-Express\Abstractions\bin\Debug\net5.0\Abstractions.pdb
+C:\Git\Repos\IT-Express\Abstractions\obj\Debug\net5.0\Abstractions.csproj.AssemblyReference.cache
+C:\Git\Repos\IT-Express\Abstractions\obj\Debug\net5.0\Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\Repos\IT-Express\Abstractions\obj\Debug\net5.0\Abstractions.AssemblyInfoInputs.cache
+C:\Git\Repos\IT-Express\Abstractions\obj\Debug\net5.0\Abstractions.AssemblyInfo.cs
+C:\Git\Repos\IT-Express\Abstractions\obj\Debug\net5.0\Abstractions.csproj.CoreCompileInputs.cache
+C:\Git\Repos\IT-Express\Abstractions\obj\Debug\net5.0\Abstractions.dll
+C:\Git\Repos\IT-Express\Abstractions\obj\Debug\net5.0\ref\Abstractions.dll
+C:\Git\Repos\IT-Express\Abstractions\obj\Debug\net5.0\Abstractions.pdb
