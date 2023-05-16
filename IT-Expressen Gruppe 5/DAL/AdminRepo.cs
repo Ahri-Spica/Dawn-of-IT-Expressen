@@ -10,43 +10,52 @@ namespace IT_Expressen_Gruppe_5.DAL
     {
         Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
 
-        /*public List<Models.Consultant> GetAllConsultants()
+        public List<Models.Admin> GetAllAdmins()
         {
-            var result = new List<Models.Consultant>();
+            var result = new List<Models.Admin>();
 
-            var ALLDtoItem = dbc.Konsulents
+            var ALLDtoItem = dbc.Admins;
 
-            Models.Consultant Consuls = new Models.Consultant();
+            Models.Admin Admin = new Models.Admin();
             foreach (var dto in ALLDtoItem)
             {
 
-                Consults.___ =
-
-                result.Add(Consults);
+                result.Add(Admin);
             }
             return result;
         }
 
-        public void DeleteConsultants(Models.Consultants dto)
+        public void DeleteAdmin(Models.Admin dto)
         {
-            var targetConsult = dbc.Konsulents.FirstOrDefault(x => x.Konsulent.Id == dto.__;
+            var targetAdmin = dbc.Admins.FirstOrDefault(x => x.Admin_ID == dto.AdminID);
 
-            dbc.Konsulents.DeleteOnSubmit(targetConsult);
+            dbc.Admins.DeleteOnSubmit(targetAdmin);
+
+            dbc.SubmitChanges();
+        }
+        public void AddAdmin(Models.Admin dto)
+        {
+            var DBObject = new Database.Admin()
+            {
+                Admin_ID = dto.AdminID,
+                //__
+            };
+
+            dbc.Admins.InsertOnSubmit(DBObject);
 
             dbc.SubmitChanges();
         }
 
-        public void EditConsultants(Models.Consultant consultEdit)
+        public void EditAdmin(Models.Admin AdminEdit)
         {
             //? Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
 
-            var targetConsult = dbc.Konsulents.FirstOrDefault(x => x.Konsulent.Id == ConsultEdit.Konsulent_Id);
+            var targetAdmin = dbc.Admins.FirstOrDefault(x => x.Admin_ID == AdminEdit.AdminID);
 
-            targetConsult.Navn = consultEdit.Navn;
-            targetConsult.Adresse = consultEdit.Adresse;
-            targetConsult.TelefonNR = consultEdit.TelefonNr;
+            targetAdmin.Navn = AdminEdit.Name;
+            //__
 
             dbc.SubmitChanges();
-        }*/
+        }
     }
 }

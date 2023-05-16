@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using IT_Expressen_Gruppe_5.Forms;
 
 namespace IT_Expressen_Gruppe_5
 {
@@ -78,6 +79,17 @@ namespace IT_Expressen_Gruppe_5
             {
 
             }
+        }
+
+        private void CreateBtn_Click(object sender, EventArgs e)
+        {
+            OpenCreateForm();
+        }
+        public void OpenCreateForm()
+        {
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.ShowDialog();
+            
         }
     }
 }

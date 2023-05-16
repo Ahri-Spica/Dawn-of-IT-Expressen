@@ -16,49 +16,38 @@ namespace IT_Expressen_Gruppe_5.DAL
             var result = new List<Models.Customer>();
 
             var ALLDtoItemCu = dbc.Kundes;
-            var ALLDtoItemUs = dbc.Brugers;
             
             Models.Customer Kunder = new Models.Customer();
             foreach (var dto in ALLDtoItemCu)
             {
 
-                Kunder.KundeID = dto.Kunde_Id;
-                //Kunder.BrugerID = dto.Bruger_Id;
-
-                result.Add(Kunder);
-            }
-            foreach (var dtoU in ALLDtoItemUs)
-            {
-                Kunder.Navn = dtoU.Navn;
-                Kunder.Adresse = dtoU.Adresse;
-                //Kunder.TelefonNr = dtoU.TelefoneNr; ;
+                Kunder.KundeID = dto.Kunde_ID;
+                Kunder.Adresse = dto.adresse;
+                Kunder.TelefonNr = dto.Tlf_nr;
+                Kunder.Navn = dto.Navn;
 
                 result.Add(Kunder);
             }
             return result;
         }
 
-        /*public void AddCustomer(Models.Customer dto)
+        public void AddCustomer(Models.Customer dto)
         {
-            var daf = new Database.Customer()
+            var DBObject = new Database.Kunde()
             {
-                CustomerID = dto.CustomerID,
-                CustomerEmail = dto.CustomerEmail,
-                Customer_Address = dto.CustomerAddress,
-                CustomerCity = dto.CustomerCity,
-                CustomerName = dto.CustomerName,
-                CustomerPhonenumber = dto.CustomerPhonenumber,
-                CustomerZip = dto.CustomerZipcode
+                Kunde_ID = dto.KundeID,
+                Navn = dto.Navn,
+                adresse = dto.Adresse,
+                Tlf_nr = dto.TelefonNr,
             };
 
-            dbcontext.Customers.InsertOnSubmit(daf);
+            dbc.Kundes.InsertOnSubmit(DBObject);
 
-            dbcontext.SubmitChanges();*/
-
-            public void DeleteCustomer(Models.Customer dto)
+            dbc.SubmitChanges();
+        }
+        public void DeleteCustomer(Models.Customer dto)
         {
-            //Måske er det Bruger der skal targetes her istedet?
-            var targetCustomer = dbc.Kundes.FirstOrDefault(x => x.Kunde_Id == dto.KundeID);
+            var targetCustomer = dbc.Kundes.FirstOrDefault(x => x.Kunde_ID == dto.KundeID);
             
             dbc.Kundes.DeleteOnSubmit(targetCustomer);
 
@@ -69,11 +58,11 @@ namespace IT_Expressen_Gruppe_5.DAL
         {
             Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
 
-            var targetCustomer = dbc.Kundes.FirstOrDefault(x => x.Kunde_Id == customerEdit.KundeID);
+            var targetCustomer = dbc.Kundes.FirstOrDefault(x => x.Kunde_ID == customerEdit.KundeID);
 
-           //targetCustomer.Navn = customerEdit.Navn;
-           //targetCustomer.Adresse = customerEdit.Adresse;
-           //targetCustomer.TelefonNR = customerEdit.TelefonNr;
+           targetCustomer.Navn = customerEdit.Navn;
+           targetCustomer.adresse = customerEdit.Adresse;
+           targetCustomer.Tlf_nr = customerEdit.TelefonNr;
 
             dbc.SubmitChanges();
         }
