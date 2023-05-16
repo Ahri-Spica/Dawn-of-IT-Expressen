@@ -10,28 +10,28 @@ namespace IT_Expressen_Gruppe_5.DAL
     {
         Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
 
-        /*public List<Models.Consultant> GetAllConsultants()
+        public List<Models.Consultant> GetAllConsultants()
         {
             var result = new List<Models.Consultant>();
 
-            var ALLDtoItem = dbc.Konsulents
+            var ALLDtoItem = dbc.Konsulent_s;
 
-            Models.Consultant Consuls = new Models.Consultant();
+            Models.Consultant Consults = new Models.Consultant();
             foreach (var dto in ALLDtoItem)
             {
 
-                Consults.___ =
+                //Consults.___ =
 
                 result.Add(Consults);
             }
             return result;
         }
 
-        public void DeleteConsultants(Models.Consultants dto)
+        public void DeleteConsultants(Models.Consultant dto)
         {
-            var targetConsult = dbc.Konsulents.FirstOrDefault(x => x.Konsulent.Id == dto.__;
+            var targetConsult = dbc.Konsulent_s.FirstOrDefault(x => x.Konsulent_ID == dto.ConsultantID);
 
-            dbc.Konsulents.DeleteOnSubmit(targetConsult);
+            dbc.Konsulent_s.DeleteOnSubmit(targetConsult);
 
             dbc.SubmitChanges();
         }
@@ -40,13 +40,13 @@ namespace IT_Expressen_Gruppe_5.DAL
         {
             //? Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
 
-            var targetConsult = dbc.Konsulents.FirstOrDefault(x => x.Konsulent.Id == ConsultEdit.Konsulent_Id);
+          /*  var targetConsult = dbc.Konsulent_s.FirstOrDefault(x => x.Konsulent_ID == ConsultEdit.Konsulent_Id);
 
             targetConsult.Navn = consultEdit.Navn;
             targetConsult.Adresse = consultEdit.Adresse;
-            targetConsult.TelefonNR = consultEdit.TelefonNr;
+            targetConsult.TelefonNR = consultEdit.TelefonNr; */
 
             dbc.SubmitChanges();
-        }*/
+        }
     }
 }

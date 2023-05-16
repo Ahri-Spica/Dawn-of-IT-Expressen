@@ -12,6 +12,6 @@ namespace IT_Expressen_Gruppe_5.Models
         public int BrugerID { get; set; }
         public string Navn { get; set; }
         public string Adresse { get; set; }
-        public int TelefonNr { get; set; }
+        public int? TelefonNr { get; set; }
     }
 }

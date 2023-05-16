@@ -33,6 +33,7 @@ namespace IT_Expressen_Gruppe_5
             this.PassBox = new System.Windows.Forms.TextBox();
             this.LoginBtn = new System.Windows.Forms.Button();
             this.testBox = new System.Windows.Forms.RichTextBox();
+            this.CreateBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // UseBox
@@ -61,17 +62,28 @@ namespace IT_Expressen_Gruppe_5
             // 
             // testBox
             // 
-            this.testBox.Location = new System.Drawing.Point(382, 87);
+            this.testBox.Location = new System.Drawing.Point(108, 319);
             this.testBox.Name = "testBox";
             this.testBox.Size = new System.Drawing.Size(150, 119);
             this.testBox.TabIndex = 3;
             this.testBox.Text = "";
+            // 
+            // CreateBtn
+            // 
+            this.CreateBtn.Location = new System.Drawing.Point(489, 170);
+            this.CreateBtn.Name = "CreateBtn";
+            this.CreateBtn.Size = new System.Drawing.Size(75, 23);
+            this.CreateBtn.TabIndex = 4;
+            this.CreateBtn.Text = "button1";
+            this.CreateBtn.UseVisualStyleBackColor = true;
+            this.CreateBtn.Click += new System.EventHandler(this.CreateBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CreateBtn);
             this.Controls.Add(this.testBox);
             this.Controls.Add(this.LoginBtn);
             this.Controls.Add(this.PassBox);
@@ -90,6 +102,7 @@ namespace IT_Expressen_Gruppe_5
         private System.Windows.Forms.TextBox PassBox;
         private System.Windows.Forms.Button LoginBtn;
         private System.Windows.Forms.RichTextBox testBox;
+        private System.Windows.Forms.Button CreateBtn;
     }
 }
 
