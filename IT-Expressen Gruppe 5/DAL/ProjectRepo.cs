@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IT_Expressen_Gruppe_5.DAL
 {
-    class ProjectRepo
+    public class ProjectRepo
     {
         Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
 
@@ -48,5 +48,6 @@ namespace IT_Expressen_Gruppe_5.DAL
 
             dbc.SubmitChanges();
         }*/
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IT_Expressen_Gruppe_5.DAL
 {
-    class ConsultantRepo
+    public class ConsultantRepo
     {
         Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
 
@@ -14,15 +14,42 @@ namespace IT_Expressen_Gruppe_5.DAL
         {
             var result = new List<Models.Consultant>();
 
-            var ALLDtoItem = dbc.Konsulent_s;
+            var ALLDtoConsultant = dbc.Konsulent_s;
 
             Models.Consultant Consults = new Models.Consultant();
-            foreach (var dto in ALLDtoItem)
+            foreach (var dto in ALLDtoConsultant)
             {
+                var Consultant = new Models.Consultant();
 
-                //Consults.___ =
+                Consultant.ConsultantID = dto.Konsulent_ID;
+                Consultant.SpecializationID = dto.specifikationer_ID;
+                Consultant.Name = dto.Navn;
+                Consultant.Adress = dto.adresse;
+                Consultant.PhoneNr = dto.Tlf_nr;
+                Consultant.Projects = new List<Models.Project>();
 
-                result.Add(Consults);
+                // Fetch related projects for this consultant
+                var relatedProjects = dbc.Projekts.Where(p => p.Konsulent_ID == dto.Konsulent_ID);
+                Consultant.Projects = new List<Models.Project>();
+                foreach (var dbProject in relatedProjects)
+                {
+                    var project = new Models.Project();
+                    project.ProjectID = dbProject.projekt_ID;
+                    project.CustomerID = (int)dbProject.Kunde_ID;
+                    project.Name = dbProject.Name;
+                    project.StartDate = (DateTime)dbProject.start_dato;
+                    project.EndDate = (DateTime)dbProject.slut_dato;
+                    project.Description = dbProject.Description;
+                    project.ProjectStatus = (int)dbProject.Projekt_status;
+                    project.HourlyRate = (int)dbProject.Timeopgørelse;
+                    project.ConsultantID = (int)dbProject.Konsulent_ID;
+                    project.ChatID = (int)dbProject.Chat_Id;
+                    project.Requirements = (int)dbProject.Krav_ID;
+
+                    Consultant.Projects.Add(project);
+                }
+
+                result.Add(Consultant);
             }
             return result;
         }
@@ -40,11 +67,11 @@ namespace IT_Expressen_Gruppe_5.DAL
         {
             //? Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
 
-          /*  var targetConsult = dbc.Konsulent_s.FirstOrDefault(x => x.Konsulent_ID == ConsultEdit.Konsulent_Id);
+            var targetConsult = dbc.Konsulent_s.FirstOrDefault(x => x.Konsulent_ID == consultEdit.ConsultantID);
 
-            targetConsult.Navn = consultEdit.Navn;
-            targetConsult.Adresse = consultEdit.Adresse;
-            targetConsult.TelefonNR = consultEdit.TelefonNr; */
+            targetConsult.Navn = consultEdit.Name;
+            targetConsult.adresse = consultEdit.Adress;
+            targetConsult.Tlf_nr = consultEdit.PhoneNr; 
 
             dbc.SubmitChanges();
         }

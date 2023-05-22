@@ -34,18 +34,18 @@
             this.tc_aktiveProjekterKunde = new System.Windows.Forms.TabPage();
             this.bt_apRediger = new System.Windows.Forms.Button();
             this.bt_delete = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgw_aktiveProjekter = new System.Windows.Forms.DataGridView();
             this.bt_opret = new System.Windows.Forms.Button();
             this.tc_færdigeProjekterKunde = new System.Windows.Forms.TabPage();
             this.bt_fpRediger = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.bt_slet = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgw_FærdigeProjekter = new System.Windows.Forms.DataGridView();
             this.bt_opretFaktura = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bt_afvis = new System.Windows.Forms.Button();
             this.bt_accepter = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgw_invitationer = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -73,11 +73,11 @@
             this.panel3.SuspendLayout();
             this.tc_kundeProjekter.SuspendLayout();
             this.tc_aktiveProjekterKunde.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgw_aktiveProjekter)).BeginInit();
             this.tc_færdigeProjekterKunde.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgw_FærdigeProjekter)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgw_invitationer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -134,7 +134,7 @@
             this.tc_aktiveProjekterKunde.AccessibleName = "";
             this.tc_aktiveProjekterKunde.Controls.Add(this.bt_apRediger);
             this.tc_aktiveProjekterKunde.Controls.Add(this.bt_delete);
-            this.tc_aktiveProjekterKunde.Controls.Add(this.dataGridView1);
+            this.tc_aktiveProjekterKunde.Controls.Add(this.dgw_aktiveProjekter);
             this.tc_aktiveProjekterKunde.Controls.Add(this.bt_opret);
             this.tc_aktiveProjekterKunde.Location = new System.Drawing.Point(4, 29);
             this.tc_aktiveProjekterKunde.Name = "tc_aktiveProjekterKunde";
@@ -162,15 +162,15 @@
             this.bt_delete.Text = "Slet";
             this.bt_delete.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgw_aktiveProjekter
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(598, 245);
-            this.dataGridView1.TabIndex = 29;
+            this.dgw_aktiveProjekter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgw_aktiveProjekter.Location = new System.Drawing.Point(0, 0);
+            this.dgw_aktiveProjekter.Name = "dgw_aktiveProjekter";
+            this.dgw_aktiveProjekter.RowHeadersWidth = 62;
+            this.dgw_aktiveProjekter.RowTemplate.Height = 28;
+            this.dgw_aktiveProjekter.Size = new System.Drawing.Size(598, 245);
+            this.dgw_aktiveProjekter.TabIndex = 29;
             // 
             // bt_opret
             // 
@@ -186,7 +186,7 @@
             this.tc_færdigeProjekterKunde.Controls.Add(this.bt_fpRediger);
             this.tc_færdigeProjekterKunde.Controls.Add(this.linkLabel1);
             this.tc_færdigeProjekterKunde.Controls.Add(this.bt_slet);
-            this.tc_færdigeProjekterKunde.Controls.Add(this.dataGridView3);
+            this.tc_færdigeProjekterKunde.Controls.Add(this.dgw_FærdigeProjekter);
             this.tc_færdigeProjekterKunde.Controls.Add(this.bt_opretFaktura);
             this.tc_færdigeProjekterKunde.Location = new System.Drawing.Point(4, 29);
             this.tc_færdigeProjekterKunde.Name = "tc_færdigeProjekterKunde";
@@ -225,15 +225,15 @@
             this.bt_slet.Text = "Slet";
             this.bt_slet.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // dgw_FærdigeProjekter
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 62;
-            this.dataGridView3.RowTemplate.Height = 28;
-            this.dataGridView3.Size = new System.Drawing.Size(598, 245);
-            this.dataGridView3.TabIndex = 36;
+            this.dgw_FærdigeProjekter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgw_FærdigeProjekter.Location = new System.Drawing.Point(0, 0);
+            this.dgw_FærdigeProjekter.Name = "dgw_FærdigeProjekter";
+            this.dgw_FærdigeProjekter.RowHeadersWidth = 62;
+            this.dgw_FærdigeProjekter.RowTemplate.Height = 28;
+            this.dgw_FærdigeProjekter.Size = new System.Drawing.Size(598, 245);
+            this.dgw_FærdigeProjekter.TabIndex = 36;
             // 
             // bt_opretFaktura
             // 
@@ -248,7 +248,7 @@
             // 
             this.panel2.Controls.Add(this.bt_afvis);
             this.panel2.Controls.Add(this.bt_accepter);
-            this.panel2.Controls.Add(this.dataGridView2);
+            this.panel2.Controls.Add(this.dgw_invitationer);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Location = new System.Drawing.Point(522, 364);
             this.panel2.Name = "panel2";
@@ -273,15 +273,15 @@
             this.bt_accepter.Text = "Accepter";
             this.bt_accepter.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dgw_invitationer
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(15, 38);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(577, 226);
-            this.dataGridView2.TabIndex = 29;
+            this.dgw_invitationer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgw_invitationer.Location = new System.Drawing.Point(15, 38);
+            this.dgw_invitationer.Name = "dgw_invitationer";
+            this.dgw_invitationer.RowHeadersWidth = 62;
+            this.dgw_invitationer.RowTemplate.Height = 28;
+            this.dgw_invitationer.Size = new System.Drawing.Size(577, 226);
+            this.dgw_invitationer.TabIndex = 29;
             // 
             // label11
             // 
@@ -413,6 +413,7 @@
             this.bt_save.TabIndex = 0;
             this.bt_save.Text = "Save";
             this.bt_save.UseVisualStyleBackColor = true;
+            this.bt_save.Click += new System.EventHandler(this.bt_save_Click);
             // 
             // tb_konFornavn
             // 
@@ -484,18 +485,19 @@
             this.Controls.Add(this.panel1);
             this.Name = "KonsulentProfil";
             this.Text = "KonsulentProfil";
+            this.Load += new System.EventHandler(this.KonsulentProfil_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.tc_kundeProjekter.ResumeLayout(false);
             this.tc_aktiveProjekterKunde.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgw_aktiveProjekter)).EndInit();
             this.tc_færdigeProjekterKunde.ResumeLayout(false);
             this.tc_færdigeProjekterKunde.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgw_FærdigeProjekter)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgw_invitationer)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -510,18 +512,18 @@
         private System.Windows.Forms.TabPage tc_aktiveProjekterKunde;
         private System.Windows.Forms.Button bt_apRediger;
         private System.Windows.Forms.Button bt_delete;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgw_aktiveProjekter;
         private System.Windows.Forms.Button bt_opret;
         private System.Windows.Forms.TabPage tc_færdigeProjekterKunde;
         private System.Windows.Forms.Button bt_fpRediger;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button bt_slet;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dgw_FærdigeProjekter;
         private System.Windows.Forms.Button bt_opretFaktura;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button bt_afvis;
         private System.Windows.Forms.Button bt_accepter;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgw_invitationer;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Label label12;

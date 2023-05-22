@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IT_Expressen_Gruppe_5.Models
 {
-    class Project
+    public class Project
     {
         public int ProjectID { get; set; }
         public int CustomerID { get; set; }
