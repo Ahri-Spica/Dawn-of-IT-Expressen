@@ -18,6 +18,6 @@ namespace IT_Expressen_Gruppe_5.Models
         public decimal HourlyRate { get; set; }
         public int ConsultantID { get; set; }
         public int ChatID { get; set; }
-        public int Requirements { get; set; }
+        public int RequirementID { get; set; }
     }
 }

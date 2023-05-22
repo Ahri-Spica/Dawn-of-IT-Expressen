@@ -34,7 +34,7 @@ namespace IT_Expressen_Gruppe_5
             bool fileExists = File.Exists(filePath);
             if (!fileExists)
             {
-                File.Create(filePath);
+                Directory.CreateDirectory(@"c:\txt");
                 File.WriteAllText(filePath, $"Admin,000,\nKunde,777,\nKonsulent,808");
             }
             //fetches data from filestream
@@ -60,8 +60,7 @@ namespace IT_Expressen_Gruppe_5
         {
             Login();
         }
-        
-        
+         
         public void Login()
         {
             //Admin Login
@@ -89,7 +88,6 @@ namespace IT_Expressen_Gruppe_5
         {
             RegisterForm registerForm = new RegisterForm();
             registerForm.ShowDialog();
-            
         }
     }
 }

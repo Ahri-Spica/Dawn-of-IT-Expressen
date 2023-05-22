@@ -8,7 +8,7 @@ namespace IT_Expressen_Gruppe_5.Services
 {
     class Konsulent_Services
     {
-       /* public List<Models.Consultant> GetAllConsultants()
+      /*public List<Models.Consultant> GetAllConsultants()
         {
             var ConsultRepo = new DAL.ConsultantRepo();
             return ConsultRepo.GetAllConsultants();
