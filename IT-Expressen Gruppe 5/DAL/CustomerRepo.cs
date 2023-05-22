@@ -57,12 +57,12 @@ namespace IT_Expressen_Gruppe_5.DAL
         public void EditCustomer(Models.Customer customerEdit)
         {
             Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
-
+            
             var targetCustomer = dbc.Kundes.FirstOrDefault(x => x.Kunde_ID == customerEdit.KundeID);
 
-           targetCustomer.Navn = customerEdit.Navn;
-           targetCustomer.adresse = customerEdit.Adresse;
-           targetCustomer.Tlf_nr = customerEdit.TelefonNr;
+            targetCustomer.Navn = customerEdit.Navn;
+            targetCustomer.adresse = customerEdit.Adresse;
+            targetCustomer.Tlf_nr = customerEdit.TelefonNr;
 
             dbc.SubmitChanges();
         }

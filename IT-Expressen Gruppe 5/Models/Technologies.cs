@@ -9,6 +9,6 @@ namespace IT_Expressen_Gruppe_5.Models
     class Technologies
     {
         public int TechnologyID { get; set; }
-        public int Technology { get; set; }
+        public string Technology { get; set; }
     }
 }

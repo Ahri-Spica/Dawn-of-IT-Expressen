@@ -9,15 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
 namespace IT_Expressen_Gruppe_5.Forms
 {
     public partial class RegisterForm : Form
     {
-        public string ConnString = @"Server=tcp:ucl-jtm-sqlserver.database.windows.net,1433;" +
-               @"Initial Catalog=2-sem-gr-5; Persist Security Info=False; " +
-               @"User ID = 2-sem-gr-5-login; Password='Gr25Pa$$word!';" +
-               @"MultipleActiveResultSets=False; Encrypt=True; TrustServerCertificate = False;" +
-               @"Connection Timeout = 30;";
+        //The Register Form is for Creating new Users
+        //It Uses Connection Strings rather than LinQ to Achieve 
 
         public RegisterForm()
         {
@@ -26,11 +24,12 @@ namespace IT_Expressen_Gruppe_5.Forms
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-            
 
         }
+
         public void CreateAdmin()
         {
+            var NewUserController = new Controllers.NewUser();
             string AdName = AdminNameBox.Text;
             string AdPhoneNr = maskedAdminPhoneBox.Text;
             string AdAdress = AdminAdressBox.Text;
@@ -41,16 +40,13 @@ namespace IT_Expressen_Gruppe_5.Forms
             }
             else
             {
-                SqlConnection conn = new SqlConnection(ConnString);
-                conn.Open();
-
-                string sSQL = $"INSERT INTO Admin VALUES ('{AdName}', '{AdAdress}', {AdPhoneNr});";
-                SqlCommand command = new SqlCommand(sSQL, conn);
-                command.ExecuteNonQuery();
+                NewUserController.NewAdmin(AdName, AdPhoneNr, AdAdress);
             }
         }
+
         public void CreateCustomer()
-        { 
+        {
+            var NewUserController = new Controllers.NewUser();
             string CuName = NameBox.Text;
             string CuPhoneNr = maskedPhoneBox.Text;
             string CuAdress = AdressBox.Text;
@@ -61,13 +57,25 @@ namespace IT_Expressen_Gruppe_5.Forms
             }
             else
             {
-                SqlConnection conn = new SqlConnection(ConnString);
-                conn.Open();
-
-                string sSQL = $"INSERT INTO Kunde VALUES ('{CuName}', {CuPhoneNr}, '{CuAdress}');";
-                SqlCommand command = new SqlCommand(sSQL, conn);
-                command.ExecuteNonQuery();
+                NewUserController.NewCustomer(CuName, CuPhoneNr, CuAdress);
             }
+        }
+
+        public void CreateConsultant()
+        {
+            var NewUserController = new Controllers.NewUser();
+            string CoName = CoNameBox.Text;
+            string CoPhone = maskedCoPhoneBox.Text;
+            string CoAdress = CoAdressBox.Text;
+
+          /*if ()
+            {
+                MessageBox.Show("Please fill out the form");
+            }
+            else
+            {
+                //NewUserController.NewConsultant(CuName, CuPhoneNr, CuAdress);
+            }*/
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -78,11 +86,19 @@ namespace IT_Expressen_Gruppe_5.Forms
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
             CreateCustomer();
+            this.Close();
         }
 
         private void AdminSubmitBtn_Click(object sender, EventArgs e)
         {
             CreateAdmin();
+            this.Close();
+        }
+
+        private void CoSubmitBtn_Click(object sender, EventArgs e)
+        {
+            CreateConsultant();
+            this.Close();
         }
     }
 }

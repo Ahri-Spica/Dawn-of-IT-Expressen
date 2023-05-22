@@ -47,10 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ConnCrudController.cs" />
     <Compile Include="DAL\AdminRepo.cs" />
     <Compile Include="DAL\ChatRepo.cs" />
     <Compile Include="DAL\ConsultantRepo.cs" />
-    <Compile Include="DAL\ProjectRepo.cs" />
+    <Compile Include="DAL\SpecsRepo.cs" />
     <Compile Include="Database\SQL_DB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,6 +121,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_2_sem_gr_5DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Services\SpecService.cs" />
     <EmbeddedResource Include="Forms\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
