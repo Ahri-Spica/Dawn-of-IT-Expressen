@@ -75,6 +75,18 @@
     <Compile Include="Forms\Forside.Designer.cs">
       <DependentUpon>Forside.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\KonsulentProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KonsulentProfil.Designer.cs">
+      <DependentUpon>KonsulentProfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\KundeProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\KundeProfil.Designer.cs">
+      <DependentUpon>KundeProfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,11 +122,20 @@
       <DependentUpon>_2_sem_gr_5DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Services\SpecService.cs" />
+    <EmbeddedResource Include="Forms\Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forside.resx">
       <DependentUpon>Forside.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KonsulentProfil.resx">
+      <DependentUpon>KonsulentProfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\KundeProfil.resx">
+      <DependentUpon>KundeProfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OpretProjekt.resx">
       <DependentUpon>OpretProjekt.cs</DependentUpon>
@@ -130,6 +151,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Database\SQL_DB.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -163,9 +185,17 @@
   <ItemGroup>
     <None Include="Database\App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\konsulent.png" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admin Billede.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

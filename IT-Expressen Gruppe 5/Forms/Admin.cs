@@ -16,5 +16,10 @@ namespace IT_Expressen_Gruppe_5
         {
             InitializeComponent();
         }
+
+        private void Admin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
