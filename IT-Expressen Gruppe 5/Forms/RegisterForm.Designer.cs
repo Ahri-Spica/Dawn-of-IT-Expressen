@@ -39,13 +39,13 @@ namespace IT_Expressen_Gruppe_5.Forms
             this.AdressBox = new System.Windows.Forms.TextBox();
             this.NameBox = new System.Windows.Forms.TextBox();
             this.ConsultantTab = new System.Windows.Forms.TabPage();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.maskedCoPhoneBox = new System.Windows.Forms.MaskedTextBox();
+            this.CoSubmitBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.CoAdressBox = new System.Windows.Forms.TextBox();
+            this.CoNameBox = new System.Windows.Forms.TextBox();
             this.Admin = new System.Windows.Forms.TabPage();
             this.maskedAdminPhoneBox = new System.Windows.Forms.MaskedTextBox();
             this.AdminSubmitBtn = new System.Windows.Forms.Button();
@@ -151,13 +151,13 @@ namespace IT_Expressen_Gruppe_5.Forms
             // 
             // ConsultantTab
             // 
-            this.ConsultantTab.Controls.Add(this.maskedTextBox1);
-            this.ConsultantTab.Controls.Add(this.button1);
+            this.ConsultantTab.Controls.Add(this.maskedCoPhoneBox);
+            this.ConsultantTab.Controls.Add(this.CoSubmitBtn);
             this.ConsultantTab.Controls.Add(this.label1);
             this.ConsultantTab.Controls.Add(this.label2);
             this.ConsultantTab.Controls.Add(this.label3);
-            this.ConsultantTab.Controls.Add(this.textBox1);
-            this.ConsultantTab.Controls.Add(this.textBox2);
+            this.ConsultantTab.Controls.Add(this.CoAdressBox);
+            this.ConsultantTab.Controls.Add(this.CoNameBox);
             this.ConsultantTab.Location = new System.Drawing.Point(4, 25);
             this.ConsultantTab.Name = "ConsultantTab";
             this.ConsultantTab.Padding = new System.Windows.Forms.Padding(3);
@@ -166,22 +166,23 @@ namespace IT_Expressen_Gruppe_5.Forms
             this.ConsultantTab.Text = "Consultant";
             this.ConsultantTab.UseVisualStyleBackColor = true;
             // 
-            // maskedTextBox1
+            // maskedCoPhoneBox
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(70, 128);
-            this.maskedTextBox1.Mask = "00000000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 22);
-            this.maskedTextBox1.TabIndex = 14;
+            this.maskedCoPhoneBox.Location = new System.Drawing.Point(70, 128);
+            this.maskedCoPhoneBox.Mask = "00000000";
+            this.maskedCoPhoneBox.Name = "maskedCoPhoneBox";
+            this.maskedCoPhoneBox.Size = new System.Drawing.Size(100, 22);
+            this.maskedCoPhoneBox.TabIndex = 14;
             // 
-            // button1
+            // CoSubmitBtn
             // 
-            this.button1.Location = new System.Drawing.Point(70, 235);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CoSubmitBtn.Location = new System.Drawing.Point(70, 235);
+            this.CoSubmitBtn.Name = "CoSubmitBtn";
+            this.CoSubmitBtn.Size = new System.Drawing.Size(100, 23);
+            this.CoSubmitBtn.TabIndex = 13;
+            this.CoSubmitBtn.Text = "Submit";
+            this.CoSubmitBtn.UseVisualStyleBackColor = true;
+            this.CoSubmitBtn.Click += new System.EventHandler(this.CoSubmitBtn_Click);
             // 
             // label1
             // 
@@ -210,19 +211,19 @@ namespace IT_Expressen_Gruppe_5.Forms
             this.label3.TabIndex = 10;
             this.label3.Text = "Name";
             // 
-            // textBox1
+            // CoAdressBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(70, 179);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 9;
+            this.CoAdressBox.Location = new System.Drawing.Point(70, 179);
+            this.CoAdressBox.Name = "CoAdressBox";
+            this.CoAdressBox.Size = new System.Drawing.Size(100, 22);
+            this.CoAdressBox.TabIndex = 9;
             // 
-            // textBox2
+            // CoNameBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(70, 77);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 8;
+            this.CoNameBox.Location = new System.Drawing.Point(70, 77);
+            this.CoNameBox.Name = "CoNameBox";
+            this.CoNameBox.Size = new System.Drawing.Size(100, 22);
+            this.CoNameBox.TabIndex = 8;
             // 
             // Admin
             // 
@@ -333,13 +334,13 @@ namespace IT_Expressen_Gruppe_5.Forms
         private System.Windows.Forms.Label NameLbl;
         private System.Windows.Forms.Button SubmitBtn;
         private System.Windows.Forms.MaskedTextBox maskedPhoneBox;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.MaskedTextBox maskedCoPhoneBox;
+        private System.Windows.Forms.Button CoSubmitBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox CoAdressBox;
+        private System.Windows.Forms.TextBox CoNameBox;
         private System.Windows.Forms.MaskedTextBox maskedAdminPhoneBox;
         private System.Windows.Forms.Button AdminSubmitBtn;
         private System.Windows.Forms.Label label4;
