@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IT_Expressen_Gruppe_5.DAL
 {
-    class ConsultantRepo
+    public class ConsultantRepo
     {
         Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
 
@@ -14,15 +14,22 @@ namespace IT_Expressen_Gruppe_5.DAL
         {
             var result = new List<Models.Consultant>();
 
-            var ALLDtoItem = dbc.Konsulent_s;
+            var ALLDtoConsultant = dbc.Konsulent_s;
 
-            Models.Consultant Consults = new Models.Consultant();
-            foreach (var dto in ALLDtoItem)
+            
+            foreach (var dto in ALLDtoConsultant)
             {
+                var Consultant = new Models.Consultant();
 
-                //Consults.___ =
+                Consultant.ConsultantID = dto.Konsulent_ID;
+                Consultant.SpecializationID = (int)dto.specifikationer_ID;
+                Consultant.Name = dto.Navn;
+                Consultant.Adress = dto.adresse;
+                Consultant.PhoneNr = dto.Tlf_nr;
+                Consultant.projects = new List<Models.Project>();
 
-                result.Add(Consults);
+                
+                result.Add(Consultant);
             }
             return result;
         }

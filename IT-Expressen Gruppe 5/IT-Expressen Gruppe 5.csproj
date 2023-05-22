@@ -94,6 +94,12 @@
     <Compile Include="Forms\OpretProjekt.Designer.cs">
       <DependentUpon>OpretProjekt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Projekt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Projekt.Designer.cs">
+      <DependentUpon>Projekt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Requirements.cs" />
     <Compile Include="Models\Specifications.cs" />
     <Compile Include="Models\Technologies.cs" />
@@ -108,6 +114,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_2_sem_gr_5DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Services\ProjectServices.cs" />
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Projekt.resx">
+      <DependentUpon>Projekt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

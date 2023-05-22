@@ -1,14 +1,68 @@
-﻿using System;
+﻿using IT_Expressen_Gruppe_5.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace IT_Expressen_Gruppe_5.DAL
-{
-    class ProjectRepo
+{     // Af dannie
+    public class ProjectRepo
     {
+        public Models.Consultant MyConsultant { get; }      
+
+        //opretter en instance af SQLDB klassen
         Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
+       
+        //Henter alt data fra projekt table i DB
+        public List<Models.Project> GetAllProjects()
+        {
+            // Initialiserer en tom liste hvor til at gemme data
+            var result = new List<Models.Project>();
+
+             // Henter data fra databasen linq to sql
+           var ProjectData = dbc.Projekts;
+
+            //ligger det hentet data in i projekt model klassen
+            foreach (var projectDto in ProjectData)
+            {
+                Models.Project project = new Models.Project();
+                project.ProjectID = projectDto.projekt_ID;
+                project.CustomerID = (int)projectDto.Kunde_ID; 
+                project.Name = projectDto.Name;
+                project.StartDate = projectDto.start_dato;
+                project.EndDate = projectDto.slut_dato;
+                project.Description = projectDto.Description;
+                project.ProjectStatus = projectDto.Projekt_status;
+                project.HourlyRate = projectDto.Timeopgørelse;
+                project.ConsultantID = projectDto.Konsulent_ID;
+                project.ChatID = projectDto.Chat_Id;
+                project.Requirements = projectDto.Krav_ID;
+
+                result.Add(project);
+            }
+
+            return result;
+        }
+      
+        public List<Models.Project> GetCompletedProjectsToConsultant()
+        {
+            var result = new List<Models.Project>();
+
+            var SortedProjects = dbc.Projekts.FirstOrDefault(ap => ap.Projekt_status == 1 && ap.Konsulent_ID == MyConsultant.ConsultantID);
+            
+            return result;
+        }
+        public List<Models.Project> GetActiveProjectsToConsultant()
+        {
+            var reuslt = new List<Models.Project>();
+            
+            var SortedProjects = dbc.Projekts.FirstOrDefault(ap => ap.Projekt_status == 0 && ap.Konsulent_ID == MyConsultant.ConsultantID);
+
+            return reuslt;
+           
+        }
+    }
 
         /*public List<Models.Consultant> GetAllConsultants()
         {
@@ -48,5 +102,5 @@ namespace IT_Expressen_Gruppe_5.DAL
 
             dbc.SubmitChanges();
         }*/
-    }
+    
 }
