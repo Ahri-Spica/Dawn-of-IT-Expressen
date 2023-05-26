@@ -39,6 +39,7 @@
             this.lb_SlutDato = new System.Windows.Forms.Label();
             this.tp2 = new System.Windows.Forms.TabControl();
             this.tb_konsulenter = new System.Windows.Forms.TabPage();
+            this.dgv_konsulenter = new System.Windows.Forms.DataGridView();
             this.b_chat = new System.Windows.Forms.Button();
             this.b_invitation = new System.Windows.Forms.Button();
             this.tb_chat = new System.Windows.Forms.TabPage();
@@ -53,15 +54,15 @@
             this.konsulentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.konsulentTableAdapter = new IT_Expressen_Gruppe_5.Database._2_sem_gr_5DataSet1TableAdapters.konsulentTableAdapter();
             this.konsulentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dgv_konsulenter = new System.Windows.Forms.DataGridView();
+            this.b_SearchKon = new System.Windows.Forms.Button();
             this.tp2.SuspendLayout();
             this.tb_konsulenter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_konsulenter)).BeginInit();
             this.tb_chat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Chat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._2_sem_gr_5DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.konsulentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.konsulentBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_konsulenter)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_ProjektNavn
@@ -132,7 +133,7 @@
             // 
             this.tp2.Controls.Add(this.tb_konsulenter);
             this.tp2.Controls.Add(this.tb_chat);
-            this.tp2.Location = new System.Drawing.Point(314, 12);
+            this.tp2.Location = new System.Drawing.Point(314, 8);
             this.tp2.Name = "tp2";
             this.tp2.SelectedIndex = 0;
             this.tp2.Size = new System.Drawing.Size(825, 345);
@@ -150,6 +151,16 @@
             this.tb_konsulenter.TabIndex = 0;
             this.tb_konsulenter.Text = "Konsulenter";
             this.tb_konsulenter.UseVisualStyleBackColor = true;
+            // 
+            // dgv_konsulenter
+            // 
+            this.dgv_konsulenter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_konsulenter.Location = new System.Drawing.Point(6, 6);
+            this.dgv_konsulenter.Name = "dgv_konsulenter";
+            this.dgv_konsulenter.RowHeadersWidth = 51;
+            this.dgv_konsulenter.RowTemplate.Height = 24;
+            this.dgv_konsulenter.Size = new System.Drawing.Size(805, 272);
+            this.dgv_konsulenter.TabIndex = 2;
             // 
             // b_chat
             // 
@@ -214,7 +225,7 @@
             this.textBox1.Location = new System.Drawing.Point(8, 242);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(300, 422);
+            this.textBox1.Size = new System.Drawing.Size(300, 408);
             this.textBox1.TabIndex = 13;
             // 
             // textBox2
@@ -239,9 +250,9 @@
             this.clb_Requirements.Items.AddRange(new object[] {
             "test1 ",
             "test2"});
-            this.clb_Requirements.Location = new System.Drawing.Point(314, 363);
+            this.clb_Requirements.Location = new System.Drawing.Point(314, 359);
             this.clb_Requirements.Name = "clb_Requirements";
-            this.clb_Requirements.Size = new System.Drawing.Size(820, 293);
+            this.clb_Requirements.Size = new System.Drawing.Size(821, 259);
             this.clb_Requirements.TabIndex = 16;
             // 
             // _2_sem_gr_5DataSet1
@@ -263,21 +274,22 @@
             this.konsulentBindingSource1.DataMember = "konsulent";
             this.konsulentBindingSource1.DataSource = this._2_sem_gr_5DataSet1;
             // 
-            // dgv_konsulenter
+            // b_SearchKon
             // 
-            this.dgv_konsulenter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_konsulenter.Location = new System.Drawing.Point(6, 6);
-            this.dgv_konsulenter.Name = "dgv_konsulenter";
-            this.dgv_konsulenter.RowHeadersWidth = 51;
-            this.dgv_konsulenter.RowTemplate.Height = 24;
-            this.dgv_konsulenter.Size = new System.Drawing.Size(805, 272);
-            this.dgv_konsulenter.TabIndex = 2;
+            this.b_SearchKon.Location = new System.Drawing.Point(654, 624);
+            this.b_SearchKon.Name = "b_SearchKon";
+            this.b_SearchKon.Size = new System.Drawing.Size(155, 26);
+            this.b_SearchKon.TabIndex = 17;
+            this.b_SearchKon.Text = "Søg Efter Konsulenter";
+            this.b_SearchKon.UseVisualStyleBackColor = true;
+            this.b_SearchKon.Click += new System.EventHandler(this.b_SearchKon_Click);
             // 
             // Projekt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1238, 726);
+            this.ClientSize = new System.Drawing.Size(1238, 649);
+            this.Controls.Add(this.b_SearchKon);
             this.Controls.Add(this.clb_Requirements);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.lb_ProjektStatus);
@@ -297,12 +309,12 @@
             this.Load += new System.EventHandler(this.Projekt_Load);
             this.tp2.ResumeLayout(false);
             this.tb_konsulenter.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_konsulenter)).EndInit();
             this.tb_chat.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Chat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._2_sem_gr_5DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.konsulentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.konsulentBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_konsulenter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,5 +347,6 @@
         private Database._2_sem_gr_5DataSet1TableAdapters.konsulentTableAdapter konsulentTableAdapter;
         private System.Windows.Forms.BindingSource konsulentBindingSource1;
         private System.Windows.Forms.DataGridView dgv_konsulenter;
+        public System.Windows.Forms.Button b_SearchKon;
     }
 }

@@ -33,6 +33,9 @@ namespace IT_Expressen_Gruppe_5.Database
     partial void InsertAdmin(Admin instance);
     partial void UpdateAdmin(Admin instance);
     partial void DeleteAdmin(Admin instance);
+    partial void InsertTeknologi(Teknologi instance);
+    partial void UpdateTeknologi(Teknologi instance);
+    partial void DeleteTeknologi(Teknologi instance);
     partial void InsertChat(Chat instance);
     partial void UpdateChat(Chat instance);
     partial void DeleteChat(Chat instance);
@@ -60,12 +63,6 @@ namespace IT_Expressen_Gruppe_5.Database
     partial void Insertspecifikationer(specifikationer instance);
     partial void Updatespecifikationer(specifikationer instance);
     partial void Deletespecifikationer(specifikationer instance);
-    partial void Insertsysdiagram(sysdiagram instance);
-    partial void Updatesysdiagram(sysdiagram instance);
-    partial void Deletesysdiagram(sysdiagram instance);
-    partial void InsertTeknologi(Teknologi instance);
-    partial void UpdateTeknologi(Teknologi instance);
-    partial void DeleteTeknologi(Teknologi instance);
     #endregion
 		
 		public SQL_DBDataContext() : 
@@ -103,6 +100,14 @@ namespace IT_Expressen_Gruppe_5.Database
 			get
 			{
 				return this.GetTable<Admin>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Teknologi> Teknologis
+		{
+			get
+			{
+				return this.GetTable<Teknologi>();
 			}
 		}
 		
@@ -177,22 +182,6 @@ namespace IT_Expressen_Gruppe_5.Database
 				return this.GetTable<specifikationer>();
 			}
 		}
-		
-		public System.Data.Linq.Table<sysdiagram> sysdiagrams
-		{
-			get
-			{
-				return this.GetTable<sysdiagram>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Teknologi> Teknologis
-		{
-			get
-			{
-				return this.GetTable<Teknologi>();
-			}
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Admin")]
@@ -228,7 +217,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Admin_ID
 		{
 			get
@@ -329,6 +318,148 @@ namespace IT_Expressen_Gruppe_5.Database
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Teknologi")]
+	public partial class Teknologi : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Teknologi_ID;
+		
+		private string _Teknologi1;
+		
+		private EntitySet<Krav> _Kravs;
+		
+		private EntitySet<specifikationer> _specifikationers;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnTeknologi_IDChanging(int value);
+    partial void OnTeknologi_IDChanged();
+    partial void OnTeknologi1Changing(string value);
+    partial void OnTeknologi1Changed();
+    #endregion
+		
+		public Teknologi()
+		{
+			this._Kravs = new EntitySet<Krav>(new Action<Krav>(this.attach_Kravs), new Action<Krav>(this.detach_Kravs));
+			this._specifikationers = new EntitySet<specifikationer>(new Action<specifikationer>(this.attach_specifikationers), new Action<specifikationer>(this.detach_specifikationers));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Teknologi_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Teknologi_ID
+		{
+			get
+			{
+				return this._Teknologi_ID;
+			}
+			set
+			{
+				if ((this._Teknologi_ID != value))
+				{
+					this.OnTeknologi_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Teknologi_ID = value;
+					this.SendPropertyChanged("Teknologi_ID");
+					this.OnTeknologi_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Teknologi", Storage="_Teknologi1", DbType="VarChar(50)")]
+		public string Teknologi1
+		{
+			get
+			{
+				return this._Teknologi1;
+			}
+			set
+			{
+				if ((this._Teknologi1 != value))
+				{
+					this.OnTeknologi1Changing(value);
+					this.SendPropertyChanging();
+					this._Teknologi1 = value;
+					this.SendPropertyChanged("Teknologi1");
+					this.OnTeknologi1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teknologi_Krav", Storage="_Kravs", ThisKey="Teknologi_ID", OtherKey="Teknlogi_ID")]
+		public EntitySet<Krav> Kravs
+		{
+			get
+			{
+				return this._Kravs;
+			}
+			set
+			{
+				this._Kravs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teknologi_specifikationer", Storage="_specifikationers", ThisKey="Teknologi_ID", OtherKey="Teknologi_ID")]
+		public EntitySet<specifikationer> specifikationers
+		{
+			get
+			{
+				return this._specifikationers;
+			}
+			set
+			{
+				this._specifikationers.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Kravs(Krav entity)
+		{
+			this.SendPropertyChanging();
+			entity.Teknologi = this;
+		}
+		
+		private void detach_Kravs(Krav entity)
+		{
+			this.SendPropertyChanging();
+			entity.Teknologi = null;
+		}
+		
+		private void attach_specifikationers(specifikationer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Teknologi = this;
+		}
+		
+		private void detach_specifikationers(specifikationer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Teknologi = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Chat")]
 	public partial class Chat : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -379,7 +510,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_chat_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_chat_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int chat_ID
 		{
 			get
@@ -689,7 +820,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fakture_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fakture_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Fakture_ID
 		{
 			get
@@ -992,7 +1123,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Invitation_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Invitation_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Invitation_ID
 		{
 			get
@@ -1276,7 +1407,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Konsulent_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Konsulent_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Konsulent_ID
 		{
 			get
@@ -1541,7 +1672,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Konsulent_type_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Konsulent_type_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Konsulent_type_Id
 		{
 			get
@@ -1670,9 +1801,9 @@ namespace IT_Expressen_Gruppe_5.Database
 		
 		private EntityRef<Konsulent_Type> _Konsulent_Type;
 		
-		private EntityRef<Projekt> _Projekt;
-		
 		private EntityRef<Teknologi> _Teknologi;
+		
+		private EntityRef<Projekt> _Projekt;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1692,12 +1823,12 @@ namespace IT_Expressen_Gruppe_5.Database
 		{
 			this._Projekts = new EntitySet<Projekt>(new Action<Projekt>(this.attach_Projekts), new Action<Projekt>(this.detach_Projekts));
 			this._Konsulent_Type = default(EntityRef<Konsulent_Type>);
-			this._Projekt = default(EntityRef<Projekt>);
 			this._Teknologi = default(EntityRef<Teknologi>);
+			this._Projekt = default(EntityRef<Projekt>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Krav_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Krav_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Krav_id
 		{
 			get
@@ -1836,40 +1967,6 @@ namespace IT_Expressen_Gruppe_5.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Projekt_Krav", Storage="_Projekt", ThisKey="Projekt_ID", OtherKey="projekt_ID", IsForeignKey=true)]
-		public Projekt Projekt
-		{
-			get
-			{
-				return this._Projekt.Entity;
-			}
-			set
-			{
-				Projekt previousValue = this._Projekt.Entity;
-				if (((previousValue != value) 
-							|| (this._Projekt.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Projekt.Entity = null;
-						previousValue.Kravs.Remove(this);
-					}
-					this._Projekt.Entity = value;
-					if ((value != null))
-					{
-						value.Kravs.Add(this);
-						this._Projekt_ID = value.projekt_ID;
-					}
-					else
-					{
-						this._Projekt_ID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Projekt");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teknologi_Krav", Storage="_Teknologi", ThisKey="Teknlogi_ID", OtherKey="Teknologi_ID", IsForeignKey=true)]
 		public Teknologi Teknologi
 		{
@@ -1900,6 +1997,40 @@ namespace IT_Expressen_Gruppe_5.Database
 						this._Teknlogi_ID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Teknologi");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Projekt_Krav", Storage="_Projekt", ThisKey="Projekt_ID", OtherKey="projekt_ID", IsForeignKey=true)]
+		public Projekt Projekt
+		{
+			get
+			{
+				return this._Projekt.Entity;
+			}
+			set
+			{
+				Projekt previousValue = this._Projekt.Entity;
+				if (((previousValue != value) 
+							|| (this._Projekt.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Projekt.Entity = null;
+						previousValue.Kravs.Remove(this);
+					}
+					this._Projekt.Entity = value;
+					if ((value != null))
+					{
+						value.Kravs.Add(this);
+						this._Projekt_ID = value.projekt_ID;
+					}
+					else
+					{
+						this._Projekt_ID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Projekt");
 				}
 			}
 		}
@@ -1976,7 +2107,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kunde_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kunde_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Kunde_ID
 		{
 			get
@@ -2135,21 +2266,21 @@ namespace IT_Expressen_Gruppe_5.Database
 		
 		private int _projekt_ID;
 		
-		private System.Nullable<int> _Kunde_ID;
+		private int _Kunde_ID;
 		
 		private string _Name;
 		
 		private System.Nullable<System.DateTime> _start_dato;
 		
-		private System.Nullable<System.DateTime> _slut_dato;
+		private System.DateTime _slut_dato;
 		
 		private string _Description;
 		
-		private System.Nullable<int> _Projekt_status;
+		private int _Projekt_status;
 		
 		private System.Nullable<int> _Konsulent_ID;
 		
-		private System.Nullable<int> _Timeopgørelse;
+		private System.Nullable<decimal> _Timeopgørelse;
 		
 		private System.Nullable<int> _Chat_Id;
 		
@@ -2171,21 +2302,21 @@ namespace IT_Expressen_Gruppe_5.Database
     partial void OnCreated();
     partial void Onprojekt_IDChanging(int value);
     partial void Onprojekt_IDChanged();
-    partial void OnKunde_IDChanging(System.Nullable<int> value);
+    partial void OnKunde_IDChanging(int value);
     partial void OnKunde_IDChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
     partial void Onstart_datoChanging(System.Nullable<System.DateTime> value);
     partial void Onstart_datoChanged();
-    partial void Onslut_datoChanging(System.Nullable<System.DateTime> value);
+    partial void Onslut_datoChanging(System.DateTime value);
     partial void Onslut_datoChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
-    partial void OnProjekt_statusChanging(System.Nullable<int> value);
+    partial void OnProjekt_statusChanging(int value);
     partial void OnProjekt_statusChanged();
     partial void OnKonsulent_IDChanging(System.Nullable<int> value);
     partial void OnKonsulent_IDChanged();
-    partial void OnTimeopgørelseChanging(System.Nullable<int> value);
+    partial void OnTimeopgørelseChanging(System.Nullable<decimal> value);
     partial void OnTimeopgørelseChanged();
     partial void OnChat_IdChanging(System.Nullable<int> value);
     partial void OnChat_IdChanged();
@@ -2203,7 +2334,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_projekt_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_projekt_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int projekt_ID
 		{
 			get
@@ -2223,8 +2354,8 @@ namespace IT_Expressen_Gruppe_5.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kunde_ID", DbType="Int")]
-		public System.Nullable<int> Kunde_ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kunde_ID", DbType="Int NOT NULL")]
+		public int Kunde_ID
 		{
 			get
 			{
@@ -2243,7 +2374,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string Name
 		{
 			get
@@ -2283,8 +2414,8 @@ namespace IT_Expressen_Gruppe_5.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_slut_dato", DbType="DateTime")]
-		public System.Nullable<System.DateTime> slut_dato
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_slut_dato", DbType="DateTime NOT NULL")]
+		public System.DateTime slut_dato
 		{
 			get
 			{
@@ -2303,7 +2434,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
 		public string Description
 		{
 			get
@@ -2323,8 +2454,8 @@ namespace IT_Expressen_Gruppe_5.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Projekt_status", DbType="Int")]
-		public System.Nullable<int> Projekt_status
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Projekt_status", DbType="Int NOT NULL")]
+		public int Projekt_status
 		{
 			get
 			{
@@ -2363,8 +2494,8 @@ namespace IT_Expressen_Gruppe_5.Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timeopgørelse", DbType="Int")]
-		public System.Nullable<int> Timeopgørelse
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timeopgørelse", DbType="Money")]
+		public System.Nullable<decimal> Timeopgørelse
 		{
 			get
 			{
@@ -2620,7 +2751,7 @@ namespace IT_Expressen_Gruppe_5.Database
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_specifikationer_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_specifikationer_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int specifikationer_ID
 		{
 			get
@@ -2799,306 +2930,6 @@ namespace IT_Expressen_Gruppe_5.Database
 		{
 			this.SendPropertyChanging();
 			entity.specifikationer = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.sysdiagrams")]
-	public partial class sysdiagram : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _name;
-		
-		private int _principal_id;
-		
-		private int _diagram_id;
-		
-		private System.Nullable<int> _version;
-		
-		private System.Data.Linq.Binary _definition;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void Onprincipal_idChanging(int value);
-    partial void Onprincipal_idChanged();
-    partial void Ondiagram_idChanging(int value);
-    partial void Ondiagram_idChanged();
-    partial void OnversionChanging(System.Nullable<int> value);
-    partial void OnversionChanged();
-    partial void OndefinitionChanging(System.Data.Linq.Binary value);
-    partial void OndefinitionChanged();
-    #endregion
-		
-		public sysdiagram()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
-		public string name
-		{
-			get
-			{
-				return this._name;
-			}
-			set
-			{
-				if ((this._name != value))
-				{
-					this.OnnameChanging(value);
-					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_principal_id", DbType="Int NOT NULL")]
-		public int principal_id
-		{
-			get
-			{
-				return this._principal_id;
-			}
-			set
-			{
-				if ((this._principal_id != value))
-				{
-					this.Onprincipal_idChanging(value);
-					this.SendPropertyChanging();
-					this._principal_id = value;
-					this.SendPropertyChanged("principal_id");
-					this.Onprincipal_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_diagram_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int diagram_id
-		{
-			get
-			{
-				return this._diagram_id;
-			}
-			set
-			{
-				if ((this._diagram_id != value))
-				{
-					this.Ondiagram_idChanging(value);
-					this.SendPropertyChanging();
-					this._diagram_id = value;
-					this.SendPropertyChanged("diagram_id");
-					this.Ondiagram_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_version", DbType="Int")]
-		public System.Nullable<int> version
-		{
-			get
-			{
-				return this._version;
-			}
-			set
-			{
-				if ((this._version != value))
-				{
-					this.OnversionChanging(value);
-					this.SendPropertyChanging();
-					this._version = value;
-					this.SendPropertyChanged("version");
-					this.OnversionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_definition", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary definition
-		{
-			get
-			{
-				return this._definition;
-			}
-			set
-			{
-				if ((this._definition != value))
-				{
-					this.OndefinitionChanging(value);
-					this.SendPropertyChanging();
-					this._definition = value;
-					this.SendPropertyChanged("definition");
-					this.OndefinitionChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Teknologi")]
-	public partial class Teknologi : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Teknologi_ID;
-		
-		private string _Teknologi1;
-		
-		private EntitySet<Krav> _Kravs;
-		
-		private EntitySet<specifikationer> _specifikationers;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnTeknologi_IDChanging(int value);
-    partial void OnTeknologi_IDChanged();
-    partial void OnTeknologi1Changing(string value);
-    partial void OnTeknologi1Changed();
-    #endregion
-		
-		public Teknologi()
-		{
-			this._Kravs = new EntitySet<Krav>(new Action<Krav>(this.attach_Kravs), new Action<Krav>(this.detach_Kravs));
-			this._specifikationers = new EntitySet<specifikationer>(new Action<specifikationer>(this.attach_specifikationers), new Action<specifikationer>(this.detach_specifikationers));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Teknologi_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int Teknologi_ID
-		{
-			get
-			{
-				return this._Teknologi_ID;
-			}
-			set
-			{
-				if ((this._Teknologi_ID != value))
-				{
-					this.OnTeknologi_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Teknologi_ID = value;
-					this.SendPropertyChanged("Teknologi_ID");
-					this.OnTeknologi_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Teknologi", Storage="_Teknologi1", DbType="VarChar(50)")]
-		public string Teknologi1
-		{
-			get
-			{
-				return this._Teknologi1;
-			}
-			set
-			{
-				if ((this._Teknologi1 != value))
-				{
-					this.OnTeknologi1Changing(value);
-					this.SendPropertyChanging();
-					this._Teknologi1 = value;
-					this.SendPropertyChanged("Teknologi1");
-					this.OnTeknologi1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teknologi_Krav", Storage="_Kravs", ThisKey="Teknologi_ID", OtherKey="Teknlogi_ID")]
-		public EntitySet<Krav> Kravs
-		{
-			get
-			{
-				return this._Kravs;
-			}
-			set
-			{
-				this._Kravs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Teknologi_specifikationer", Storage="_specifikationers", ThisKey="Teknologi_ID", OtherKey="Teknologi_ID")]
-		public EntitySet<specifikationer> specifikationers
-		{
-			get
-			{
-				return this._specifikationers;
-			}
-			set
-			{
-				this._specifikationers.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Kravs(Krav entity)
-		{
-			this.SendPropertyChanging();
-			entity.Teknologi = this;
-		}
-		
-		private void detach_Kravs(Krav entity)
-		{
-			this.SendPropertyChanging();
-			entity.Teknologi = null;
-		}
-		
-		private void attach_specifikationers(specifikationer entity)
-		{
-			this.SendPropertyChanging();
-			entity.Teknologi = this;
-		}
-		
-		private void detach_specifikationers(specifikationer entity)
-		{
-			this.SendPropertyChanging();
-			entity.Teknologi = null;
 		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using IT_Expressen_Gruppe_5.DAL;
+using IT_Expressen_Gruppe_5.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,47 +15,54 @@ namespace IT_Expressen_Gruppe_5.Models
     //Af Dannie
     public partial class Projekt : Form
     {
+        private readonly SpecService spec_service;
         public Models.Project CustomerProject { get; set; }
 
         public Projekt()
         {
             InitializeComponent();
+            spec_service = new SpecService();
         }
 
         private void Projekt_Load(object sender, EventArgs e)
         {
+            UpdateCheckListBox();
             //LoadCustomerProject();
             UpdateProjectOnUI();
         }
-
-        private void UpdateProjectOnUI()
+       
+        private void UpdateCheckListBox()
         {
-           
-            ConsultantRepo consultantRepo = new ConsultantRepo();
-            dgv_konsulenter.DataSource = consultantRepo.GetAllConsultants();
-
-             //tb_ProjektName.Text = CustomerProject.Name;
-            /* Virker IKKE! Clear existing items in the CheckListBox
-            clb_Requirements.Items.Clear();
-
-            // Check if the requirements are not null before iterating
-            if (CustomerProject.Requirements != null)
+            List<Models.Technologies> technologies = spec_service.GetAllTechnologies();
+            foreach (var tech in technologies)
             {
-                // Convert nullable integer to non-nullable integer
-                int requirementsCount = CustomerProject.Requirements ?? 0;
+                clb_Requirements.Items.Add(tech.Technology);
+            }
+        }
+        private void UpdateProjectOnUI()
+        { 
+            //ConsultantRepo consultantRepo = new ConsultantRepo();
+           //dgv_konsulenter.DataSource = consultantRepo.GetAllConsultants();
 
-                // Add requirements to the CheckListBox
-                for (int i = 0; i < requirementsCount; i++)
-                {
-                    clb_Requirements.Items.Add(i + 1);
-                }
-            }*/
+
+
+            ProjectRepo projectRepo = new ProjectRepo();
+            dgv_konsulenter.DataSource = projectRepo.GetCompletedProjectsToConsultant();
+
+
+            //tb_ProjektName.Text = CustomerProject.Name;
+
+
         }
         private void LoadCustomerProject()
         {
             CustomerProject = new Models.Project();
+            
         }
 
-      
+        private void b_SearchKon_Click(object sender, EventArgs e)
+        {
+
+        }
     }   
 }
