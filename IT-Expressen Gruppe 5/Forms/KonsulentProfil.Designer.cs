@@ -28,24 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tc_kundeProjekter = new System.Windows.Forms.TabControl();
             this.tc_aktiveProjekterKunde = new System.Windows.Forms.TabPage();
             this.bt_apRediger = new System.Windows.Forms.Button();
-            this.bt_delete = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bt_ApDelete = new System.Windows.Forms.Button();
+            this.dgv_AProjects = new System.Windows.Forms.DataGridView();
+            this.projectIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.projectStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hourlyRateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.consultantIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chatIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requirementsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.projectBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bt_opret = new System.Windows.Forms.Button();
             this.tc_færdigeProjekterKunde = new System.Windows.Forms.TabPage();
             this.bt_fpRediger = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.bt_slet = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.bt_FpDelete = new System.Windows.Forms.Button();
+            this.dgv_FProjects = new System.Windows.Forms.DataGridView();
+            this.projectIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startDateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endDateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.projectStatusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hourlyRateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.consultantIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chatIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requirementsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bt_opretFaktura = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bt_afvis = new System.Windows.Forms.Button();
             this.bt_accepter = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgv_Invitations = new System.Windows.Forms.DataGridView();
+            this.inviteIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.projectIDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custimerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notificationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notificationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label11 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -73,11 +102,13 @@
             this.panel3.SuspendLayout();
             this.tc_kundeProjekter.SuspendLayout();
             this.tc_aktiveProjekterKunde.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_AProjects)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).BeginInit();
             this.tc_færdigeProjekterKunde.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_FProjects)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Invitations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.notificationBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -108,15 +139,16 @@
             this.panel1.Controls.Add(this.tb_konEfternavn);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1156, 687);
+            this.panel1.Size = new System.Drawing.Size(1215, 687);
             this.panel1.TabIndex = 18;
             // 
             // panel3
             // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.tc_kundeProjekter);
             this.panel3.Location = new System.Drawing.Point(522, 14);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(611, 339);
+            this.panel3.Size = new System.Drawing.Size(675, 339);
             this.panel3.TabIndex = 33;
             // 
             // tc_kundeProjekter
@@ -126,118 +158,361 @@
             this.tc_kundeProjekter.Location = new System.Drawing.Point(3, 3);
             this.tc_kundeProjekter.Name = "tc_kundeProjekter";
             this.tc_kundeProjekter.SelectedIndex = 0;
-            this.tc_kundeProjekter.Size = new System.Drawing.Size(606, 333);
+            this.tc_kundeProjekter.Size = new System.Drawing.Size(669, 333);
             this.tc_kundeProjekter.TabIndex = 33;
             // 
             // tc_aktiveProjekterKunde
             // 
             this.tc_aktiveProjekterKunde.AccessibleName = "";
             this.tc_aktiveProjekterKunde.Controls.Add(this.bt_apRediger);
-            this.tc_aktiveProjekterKunde.Controls.Add(this.bt_delete);
-            this.tc_aktiveProjekterKunde.Controls.Add(this.dataGridView1);
+            this.tc_aktiveProjekterKunde.Controls.Add(this.bt_ApDelete);
+            this.tc_aktiveProjekterKunde.Controls.Add(this.dgv_AProjects);
             this.tc_aktiveProjekterKunde.Controls.Add(this.bt_opret);
             this.tc_aktiveProjekterKunde.Location = new System.Drawing.Point(4, 29);
             this.tc_aktiveProjekterKunde.Name = "tc_aktiveProjekterKunde";
             this.tc_aktiveProjekterKunde.Padding = new System.Windows.Forms.Padding(3);
-            this.tc_aktiveProjekterKunde.Size = new System.Drawing.Size(598, 300);
+            this.tc_aktiveProjekterKunde.Size = new System.Drawing.Size(661, 300);
             this.tc_aktiveProjekterKunde.TabIndex = 0;
             this.tc_aktiveProjekterKunde.Text = "Aktive Projekter";
             this.tc_aktiveProjekterKunde.UseVisualStyleBackColor = true;
             // 
             // bt_apRediger
             // 
-            this.bt_apRediger.Location = new System.Drawing.Point(375, 257);
+            this.bt_apRediger.Location = new System.Drawing.Point(437, 258);
             this.bt_apRediger.Name = "bt_apRediger";
             this.bt_apRediger.Size = new System.Drawing.Size(106, 36);
             this.bt_apRediger.TabIndex = 37;
             this.bt_apRediger.Text = "Rediger";
             this.bt_apRediger.UseVisualStyleBackColor = true;
+            this.bt_apRediger.Click += new System.EventHandler(this.bt_apRediger_Click);
             // 
-            // bt_delete
+            // bt_ApDelete
             // 
-            this.bt_delete.Location = new System.Drawing.Point(263, 257);
-            this.bt_delete.Name = "bt_delete";
-            this.bt_delete.Size = new System.Drawing.Size(106, 36);
-            this.bt_delete.TabIndex = 35;
-            this.bt_delete.Text = "Slet";
-            this.bt_delete.UseVisualStyleBackColor = true;
+            this.bt_ApDelete.Location = new System.Drawing.Point(549, 258);
+            this.bt_ApDelete.Name = "bt_ApDelete";
+            this.bt_ApDelete.Size = new System.Drawing.Size(106, 36);
+            this.bt_ApDelete.TabIndex = 35;
+            this.bt_ApDelete.Text = "Slet";
+            this.bt_ApDelete.UseVisualStyleBackColor = true;
+            this.bt_ApDelete.Click += new System.EventHandler(this.bt_ApDelete_Click);
             // 
-            // dataGridView1
+            // dgv_AProjects
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(598, 245);
-            this.dataGridView1.TabIndex = 29;
+            this.dgv_AProjects.AutoGenerateColumns = false;
+            this.dgv_AProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_AProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.projectIDDataGridViewTextBoxColumn,
+            this.customerIDDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.startDateDataGridViewTextBoxColumn,
+            this.endDateDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.projectStatusDataGridViewTextBoxColumn,
+            this.hourlyRateDataGridViewTextBoxColumn,
+            this.consultantIDDataGridViewTextBoxColumn,
+            this.chatIDDataGridViewTextBoxColumn,
+            this.requirementsDataGridViewTextBoxColumn});
+            this.dgv_AProjects.DataSource = this.projectBindingSource;
+            this.dgv_AProjects.Location = new System.Drawing.Point(0, 0);
+            this.dgv_AProjects.MultiSelect = false;
+            this.dgv_AProjects.Name = "dgv_AProjects";
+            this.dgv_AProjects.ReadOnly = true;
+            this.dgv_AProjects.RowHeadersVisible = false;
+            this.dgv_AProjects.RowHeadersWidth = 62;
+            this.dgv_AProjects.RowTemplate.Height = 28;
+            this.dgv_AProjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_AProjects.Size = new System.Drawing.Size(661, 245);
+            this.dgv_AProjects.TabIndex = 29;
+            // 
+            // projectIDDataGridViewTextBoxColumn
+            // 
+            this.projectIDDataGridViewTextBoxColumn.DataPropertyName = "ProjectID";
+            this.projectIDDataGridViewTextBoxColumn.HeaderText = "ProjectID";
+            this.projectIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.projectIDDataGridViewTextBoxColumn.Name = "projectIDDataGridViewTextBoxColumn";
+            this.projectIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.projectIDDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // customerIDDataGridViewTextBoxColumn
+            // 
+            this.customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn.HeaderText = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
+            this.customerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.customerIDDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // startDateDataGridViewTextBoxColumn
+            // 
+            this.startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
+            this.startDateDataGridViewTextBoxColumn.HeaderText = "StartDate";
+            this.startDateDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
+            this.startDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.startDateDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // endDateDataGridViewTextBoxColumn
+            // 
+            this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
+            this.endDateDataGridViewTextBoxColumn.HeaderText = "EndDate";
+            this.endDateDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
+            this.endDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.endDateDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // projectStatusDataGridViewTextBoxColumn
+            // 
+            this.projectStatusDataGridViewTextBoxColumn.DataPropertyName = "ProjectStatus";
+            this.projectStatusDataGridViewTextBoxColumn.HeaderText = "ProjectStatus";
+            this.projectStatusDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.projectStatusDataGridViewTextBoxColumn.Name = "projectStatusDataGridViewTextBoxColumn";
+            this.projectStatusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.projectStatusDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // hourlyRateDataGridViewTextBoxColumn
+            // 
+            this.hourlyRateDataGridViewTextBoxColumn.DataPropertyName = "HourlyRate";
+            this.hourlyRateDataGridViewTextBoxColumn.HeaderText = "HourlyRate";
+            this.hourlyRateDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.hourlyRateDataGridViewTextBoxColumn.Name = "hourlyRateDataGridViewTextBoxColumn";
+            this.hourlyRateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hourlyRateDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // consultantIDDataGridViewTextBoxColumn
+            // 
+            this.consultantIDDataGridViewTextBoxColumn.DataPropertyName = "ConsultantID";
+            this.consultantIDDataGridViewTextBoxColumn.HeaderText = "ConsultantID";
+            this.consultantIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.consultantIDDataGridViewTextBoxColumn.Name = "consultantIDDataGridViewTextBoxColumn";
+            this.consultantIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.consultantIDDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // chatIDDataGridViewTextBoxColumn
+            // 
+            this.chatIDDataGridViewTextBoxColumn.DataPropertyName = "ChatID";
+            this.chatIDDataGridViewTextBoxColumn.HeaderText = "ChatID";
+            this.chatIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.chatIDDataGridViewTextBoxColumn.Name = "chatIDDataGridViewTextBoxColumn";
+            this.chatIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.chatIDDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // requirementsDataGridViewTextBoxColumn
+            // 
+            this.requirementsDataGridViewTextBoxColumn.DataPropertyName = "Requirements";
+            this.requirementsDataGridViewTextBoxColumn.HeaderText = "Requirements";
+            this.requirementsDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.requirementsDataGridViewTextBoxColumn.Name = "requirementsDataGridViewTextBoxColumn";
+            this.requirementsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.requirementsDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // projectBindingSource
+            // 
+            this.projectBindingSource.DataSource = typeof(IT_Expressen_Gruppe_5.Models.Project);
             // 
             // bt_opret
             // 
-            this.bt_opret.Location = new System.Drawing.Point(487, 257);
+            this.bt_opret.Location = new System.Drawing.Point(325, 258);
             this.bt_opret.Name = "bt_opret";
             this.bt_opret.Size = new System.Drawing.Size(106, 36);
             this.bt_opret.TabIndex = 34;
             this.bt_opret.Text = "Opret";
             this.bt_opret.UseVisualStyleBackColor = true;
+            this.bt_opret.Click += new System.EventHandler(this.bt_opret_Click);
             // 
             // tc_færdigeProjekterKunde
             // 
             this.tc_færdigeProjekterKunde.Controls.Add(this.bt_fpRediger);
             this.tc_færdigeProjekterKunde.Controls.Add(this.linkLabel1);
-            this.tc_færdigeProjekterKunde.Controls.Add(this.bt_slet);
-            this.tc_færdigeProjekterKunde.Controls.Add(this.dataGridView3);
+            this.tc_færdigeProjekterKunde.Controls.Add(this.bt_FpDelete);
+            this.tc_færdigeProjekterKunde.Controls.Add(this.dgv_FProjects);
             this.tc_færdigeProjekterKunde.Controls.Add(this.bt_opretFaktura);
             this.tc_færdigeProjekterKunde.Location = new System.Drawing.Point(4, 29);
             this.tc_færdigeProjekterKunde.Name = "tc_færdigeProjekterKunde";
             this.tc_færdigeProjekterKunde.Padding = new System.Windows.Forms.Padding(3);
-            this.tc_færdigeProjekterKunde.Size = new System.Drawing.Size(598, 300);
+            this.tc_færdigeProjekterKunde.Size = new System.Drawing.Size(661, 300);
             this.tc_færdigeProjekterKunde.TabIndex = 1;
             this.tc_færdigeProjekterKunde.Text = "Færdige Projekter";
             this.tc_færdigeProjekterKunde.UseVisualStyleBackColor = true;
             // 
             // bt_fpRediger
             // 
-            this.bt_fpRediger.Location = new System.Drawing.Point(374, 258);
+            this.bt_fpRediger.Location = new System.Drawing.Point(437, 258);
             this.bt_fpRediger.Name = "bt_fpRediger";
             this.bt_fpRediger.Size = new System.Drawing.Size(106, 36);
             this.bt_fpRediger.TabIndex = 39;
             this.bt_fpRediger.Text = "Rediger";
             this.bt_fpRediger.UseVisualStyleBackColor = true;
+            this.bt_fpRediger.Click += new System.EventHandler(this.bt_fpRediger_Click);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AccessibleDescription = "Der bliver kun oprettet faktura af udførte projekter";
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(176, 266);
+            this.linkLabel1.Location = new System.Drawing.Point(239, 266);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(18, 20);
             this.linkLabel1.TabIndex = 33;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "?";
             // 
-            // bt_slet
+            // bt_FpDelete
             // 
-            this.bt_slet.Location = new System.Drawing.Point(486, 258);
-            this.bt_slet.Name = "bt_slet";
-            this.bt_slet.Size = new System.Drawing.Size(106, 36);
-            this.bt_slet.TabIndex = 38;
-            this.bt_slet.Text = "Slet";
-            this.bt_slet.UseVisualStyleBackColor = true;
+            this.bt_FpDelete.Location = new System.Drawing.Point(549, 258);
+            this.bt_FpDelete.Name = "bt_FpDelete";
+            this.bt_FpDelete.Size = new System.Drawing.Size(106, 36);
+            this.bt_FpDelete.TabIndex = 38;
+            this.bt_FpDelete.Text = "Slet";
+            this.bt_FpDelete.UseVisualStyleBackColor = true;
+            this.bt_FpDelete.Click += new System.EventHandler(this.bt_FpDelete_Click);
             // 
-            // dataGridView3
+            // dgv_FProjects
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 62;
-            this.dataGridView3.RowTemplate.Height = 28;
-            this.dataGridView3.Size = new System.Drawing.Size(598, 245);
-            this.dataGridView3.TabIndex = 36;
+            this.dgv_FProjects.AutoGenerateColumns = false;
+            this.dgv_FProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_FProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.projectIDDataGridViewTextBoxColumn1,
+            this.customerIDDataGridViewTextBoxColumn1,
+            this.nameDataGridViewTextBoxColumn1,
+            this.startDateDataGridViewTextBoxColumn1,
+            this.endDateDataGridViewTextBoxColumn1,
+            this.descriptionDataGridViewTextBoxColumn1,
+            this.projectStatusDataGridViewTextBoxColumn1,
+            this.hourlyRateDataGridViewTextBoxColumn1,
+            this.consultantIDDataGridViewTextBoxColumn1,
+            this.chatIDDataGridViewTextBoxColumn1,
+            this.requirementsDataGridViewTextBoxColumn1});
+            this.dgv_FProjects.DataSource = this.projectBindingSource;
+            this.dgv_FProjects.Location = new System.Drawing.Point(0, 0);
+            this.dgv_FProjects.MultiSelect = false;
+            this.dgv_FProjects.Name = "dgv_FProjects";
+            this.dgv_FProjects.ReadOnly = true;
+            this.dgv_FProjects.RowHeadersVisible = false;
+            this.dgv_FProjects.RowHeadersWidth = 62;
+            this.dgv_FProjects.RowTemplate.Height = 28;
+            this.dgv_FProjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_FProjects.Size = new System.Drawing.Size(661, 245);
+            this.dgv_FProjects.TabIndex = 36;
+            // 
+            // projectIDDataGridViewTextBoxColumn1
+            // 
+            this.projectIDDataGridViewTextBoxColumn1.DataPropertyName = "ProjectID";
+            this.projectIDDataGridViewTextBoxColumn1.HeaderText = "ProjectID";
+            this.projectIDDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.projectIDDataGridViewTextBoxColumn1.Name = "projectIDDataGridViewTextBoxColumn1";
+            this.projectIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.projectIDDataGridViewTextBoxColumn1.Width = 75;
+            // 
+            // customerIDDataGridViewTextBoxColumn1
+            // 
+            this.customerIDDataGridViewTextBoxColumn1.DataPropertyName = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn1.HeaderText = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.customerIDDataGridViewTextBoxColumn1.Name = "customerIDDataGridViewTextBoxColumn1";
+            this.customerIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.customerIDDataGridViewTextBoxColumn1.Width = 75;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // startDateDataGridViewTextBoxColumn1
+            // 
+            this.startDateDataGridViewTextBoxColumn1.DataPropertyName = "StartDate";
+            this.startDateDataGridViewTextBoxColumn1.HeaderText = "StartDate";
+            this.startDateDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.startDateDataGridViewTextBoxColumn1.Name = "startDateDataGridViewTextBoxColumn1";
+            this.startDateDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.startDateDataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // endDateDataGridViewTextBoxColumn1
+            // 
+            this.endDateDataGridViewTextBoxColumn1.DataPropertyName = "EndDate";
+            this.endDateDataGridViewTextBoxColumn1.HeaderText = "EndDate";
+            this.endDateDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.endDateDataGridViewTextBoxColumn1.Name = "endDateDataGridViewTextBoxColumn1";
+            this.endDateDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.endDateDataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // descriptionDataGridViewTextBoxColumn1
+            // 
+            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+            this.descriptionDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // projectStatusDataGridViewTextBoxColumn1
+            // 
+            this.projectStatusDataGridViewTextBoxColumn1.DataPropertyName = "ProjectStatus";
+            this.projectStatusDataGridViewTextBoxColumn1.HeaderText = "ProjectStatus";
+            this.projectStatusDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.projectStatusDataGridViewTextBoxColumn1.Name = "projectStatusDataGridViewTextBoxColumn1";
+            this.projectStatusDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.projectStatusDataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // hourlyRateDataGridViewTextBoxColumn1
+            // 
+            this.hourlyRateDataGridViewTextBoxColumn1.DataPropertyName = "HourlyRate";
+            this.hourlyRateDataGridViewTextBoxColumn1.HeaderText = "HourlyRate";
+            this.hourlyRateDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.hourlyRateDataGridViewTextBoxColumn1.Name = "hourlyRateDataGridViewTextBoxColumn1";
+            this.hourlyRateDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.hourlyRateDataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // consultantIDDataGridViewTextBoxColumn1
+            // 
+            this.consultantIDDataGridViewTextBoxColumn1.DataPropertyName = "ConsultantID";
+            this.consultantIDDataGridViewTextBoxColumn1.HeaderText = "ConsultantID";
+            this.consultantIDDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.consultantIDDataGridViewTextBoxColumn1.Name = "consultantIDDataGridViewTextBoxColumn1";
+            this.consultantIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.consultantIDDataGridViewTextBoxColumn1.Width = 75;
+            // 
+            // chatIDDataGridViewTextBoxColumn1
+            // 
+            this.chatIDDataGridViewTextBoxColumn1.DataPropertyName = "ChatID";
+            this.chatIDDataGridViewTextBoxColumn1.HeaderText = "ChatID";
+            this.chatIDDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.chatIDDataGridViewTextBoxColumn1.Name = "chatIDDataGridViewTextBoxColumn1";
+            this.chatIDDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.chatIDDataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // requirementsDataGridViewTextBoxColumn1
+            // 
+            this.requirementsDataGridViewTextBoxColumn1.DataPropertyName = "Requirements";
+            this.requirementsDataGridViewTextBoxColumn1.HeaderText = "Requirements";
+            this.requirementsDataGridViewTextBoxColumn1.MinimumWidth = 8;
+            this.requirementsDataGridViewTextBoxColumn1.Name = "requirementsDataGridViewTextBoxColumn1";
+            this.requirementsDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.requirementsDataGridViewTextBoxColumn1.Width = 150;
             // 
             // bt_opretFaktura
             // 
-            this.bt_opretFaktura.Location = new System.Drawing.Point(200, 258);
+            this.bt_opretFaktura.Location = new System.Drawing.Point(263, 258);
             this.bt_opretFaktura.Name = "bt_opretFaktura";
             this.bt_opretFaktura.Size = new System.Drawing.Size(168, 36);
             this.bt_opretFaktura.TabIndex = 32;
@@ -246,18 +521,19 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.bt_afvis);
             this.panel2.Controls.Add(this.bt_accepter);
-            this.panel2.Controls.Add(this.dataGridView2);
+            this.panel2.Controls.Add(this.dgv_Invitations);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Location = new System.Drawing.Point(522, 364);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(611, 314);
+            this.panel2.Size = new System.Drawing.Size(675, 314);
             this.panel2.TabIndex = 31;
             // 
             // bt_afvis
             // 
-            this.bt_afvis.Location = new System.Drawing.Point(374, 270);
+            this.bt_afvis.Location = new System.Drawing.Point(438, 270);
             this.bt_afvis.Name = "bt_afvis";
             this.bt_afvis.Size = new System.Drawing.Size(106, 36);
             this.bt_afvis.TabIndex = 33;
@@ -266,22 +542,73 @@
             // 
             // bt_accepter
             // 
-            this.bt_accepter.Location = new System.Drawing.Point(486, 270);
+            this.bt_accepter.Location = new System.Drawing.Point(550, 270);
             this.bt_accepter.Name = "bt_accepter";
             this.bt_accepter.Size = new System.Drawing.Size(106, 36);
             this.bt_accepter.TabIndex = 32;
             this.bt_accepter.Text = "Accepter";
             this.bt_accepter.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dgv_Invitations
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(15, 38);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(577, 226);
-            this.dataGridView2.TabIndex = 29;
+            this.dgv_Invitations.AutoGenerateColumns = false;
+            this.dgv_Invitations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Invitations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.inviteIDDataGridViewTextBoxColumn,
+            this.projectIDDataGridViewTextBoxColumn2,
+            this.custimerIDDataGridViewTextBoxColumn,
+            this.notificationDataGridViewTextBoxColumn});
+            this.dgv_Invitations.DataSource = this.notificationBindingSource;
+            this.dgv_Invitations.Location = new System.Drawing.Point(15, 38);
+            this.dgv_Invitations.MultiSelect = false;
+            this.dgv_Invitations.Name = "dgv_Invitations";
+            this.dgv_Invitations.ReadOnly = true;
+            this.dgv_Invitations.RowHeadersVisible = false;
+            this.dgv_Invitations.RowHeadersWidth = 62;
+            this.dgv_Invitations.RowTemplate.Height = 28;
+            this.dgv_Invitations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Invitations.Size = new System.Drawing.Size(641, 226);
+            this.dgv_Invitations.TabIndex = 29;
+            // 
+            // inviteIDDataGridViewTextBoxColumn
+            // 
+            this.inviteIDDataGridViewTextBoxColumn.DataPropertyName = "InviteID";
+            this.inviteIDDataGridViewTextBoxColumn.HeaderText = "InviteID";
+            this.inviteIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.inviteIDDataGridViewTextBoxColumn.Name = "inviteIDDataGridViewTextBoxColumn";
+            this.inviteIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.inviteIDDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // projectIDDataGridViewTextBoxColumn2
+            // 
+            this.projectIDDataGridViewTextBoxColumn2.DataPropertyName = "ProjectID";
+            this.projectIDDataGridViewTextBoxColumn2.HeaderText = "ProjectID";
+            this.projectIDDataGridViewTextBoxColumn2.MinimumWidth = 8;
+            this.projectIDDataGridViewTextBoxColumn2.Name = "projectIDDataGridViewTextBoxColumn2";
+            this.projectIDDataGridViewTextBoxColumn2.ReadOnly = true;
+            this.projectIDDataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // custimerIDDataGridViewTextBoxColumn
+            // 
+            this.custimerIDDataGridViewTextBoxColumn.DataPropertyName = "CustimerID";
+            this.custimerIDDataGridViewTextBoxColumn.HeaderText = "CustimerID";
+            this.custimerIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.custimerIDDataGridViewTextBoxColumn.Name = "custimerIDDataGridViewTextBoxColumn";
+            this.custimerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.custimerIDDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // notificationDataGridViewTextBoxColumn
+            // 
+            this.notificationDataGridViewTextBoxColumn.DataPropertyName = "Notification_";
+            this.notificationDataGridViewTextBoxColumn.HeaderText = "Notification_";
+            this.notificationDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.notificationDataGridViewTextBoxColumn.Name = "notificationDataGridViewTextBoxColumn";
+            this.notificationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.notificationDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // notificationBindingSource
+            // 
+            this.notificationBindingSource.DataSource = typeof(IT_Expressen_Gruppe_5.Models.Notification);
             // 
             // label11
             // 
@@ -413,6 +740,7 @@
             this.bt_save.TabIndex = 0;
             this.bt_save.Text = "Save";
             this.bt_save.UseVisualStyleBackColor = true;
+            this.bt_save.Click += new System.EventHandler(this.bt_save_Click_1);
             // 
             // tb_konFornavn
             // 
@@ -480,22 +808,25 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 714);
+            this.ClientSize = new System.Drawing.Size(1239, 714);
             this.Controls.Add(this.panel1);
             this.Name = "KonsulentProfil";
             this.Text = "KonsulentProfil";
+            this.Load += new System.EventHandler(this.KonsulentProfil_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.tc_kundeProjekter.ResumeLayout(false);
             this.tc_aktiveProjekterKunde.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_AProjects)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectBindingSource)).EndInit();
             this.tc_færdigeProjekterKunde.ResumeLayout(false);
             this.tc_færdigeProjekterKunde.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_FProjects)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Invitations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.notificationBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -509,19 +840,18 @@
         private System.Windows.Forms.TabControl tc_kundeProjekter;
         private System.Windows.Forms.TabPage tc_aktiveProjekterKunde;
         private System.Windows.Forms.Button bt_apRediger;
-        private System.Windows.Forms.Button bt_delete;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button bt_ApDelete;
         private System.Windows.Forms.Button bt_opret;
         private System.Windows.Forms.TabPage tc_færdigeProjekterKunde;
         private System.Windows.Forms.Button bt_fpRediger;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Button bt_slet;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button bt_FpDelete;
+        private System.Windows.Forms.DataGridView dgv_FProjects;
         private System.Windows.Forms.Button bt_opretFaktura;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button bt_afvis;
         private System.Windows.Forms.Button bt_accepter;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgv_Invitations;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Label label12;
@@ -545,5 +875,34 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tb_konEfternavn;
+        private System.Windows.Forms.BindingSource projectBindingSource;
+        public System.Windows.Forms.DataGridView dgv_AProjects;
+        private System.Windows.Forms.DataGridViewTextBoxColumn projectIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn projectStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hourlyRateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn consultantIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn chatIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn requirementsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn projectIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn projectStatusDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hourlyRateDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn consultantIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn chatIDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn requirementsDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inviteIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn projectIDDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custimerIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn notificationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource notificationBindingSource;
     }
 }

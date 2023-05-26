@@ -22,12 +22,18 @@ namespace IT_Expressen_Gruppe_5.Services
         {
             var projectRepo = new DAL.ProjectRepo();
             return projectRepo.GetCompletedProjectsToConsultant();
+
         }
         public List<Models.Project> GetActiveProjectsToConsultant()
         {
             var projectRepo = new DAL.ProjectRepo();
             return projectRepo.GetActiveProjectsToConsultant();
 
+        }
+        public void DeleteProject(Models.Project MyProject)
+        {
+            var projectRepo = new DAL.ProjectRepo();
+            projectRepo.DeleteProject(MyProject);
         }
     }
 }

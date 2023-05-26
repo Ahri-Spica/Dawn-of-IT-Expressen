@@ -16,7 +16,7 @@ namespace IT_Expressen_Gruppe_5.Models
     {
         public Models.Project CustomerProject { get; set; }
 
-        public Projekt()
+        public Projekt(object openform, bool EditProject)
         {
             InitializeComponent();
         }

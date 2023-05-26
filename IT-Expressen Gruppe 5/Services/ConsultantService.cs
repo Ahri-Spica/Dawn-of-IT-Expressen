@@ -22,11 +22,11 @@ namespace IT_Expressen_Gruppe_5.Services
         {
             var DeleteConsultantFromRepo = new DAL.ConsultantRepo();
             DeleteConsultantFromRepo.DeleteConsultant(dto);
-        }
+        } */
         public void EditConsultant(Models.Consultant dto)
         {
             var EditConsultantRepo = new DAL.ConsultantRepo();
-            EditConsultantRepo.EditConsultant(dto);
-        } */
+            EditConsultantRepo.EditConsultants(dto);
+        } 
     }
 }

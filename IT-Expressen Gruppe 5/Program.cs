@@ -1,4 +1,5 @@
-﻿using IT_Expressen_Gruppe_5.Models;
+﻿using IT_Expressen_Gruppe_5.Forms;
+using IT_Expressen_Gruppe_5.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace IT_Expressen_Gruppe_5
             Application.Run(new Form1());*/
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Projekt());
+            Application.Run(new KonsulentProfil());
         }
     }
 }

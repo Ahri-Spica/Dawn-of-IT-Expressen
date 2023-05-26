@@ -13,5 +13,6 @@ namespace IT_Expressen_Gruppe_5.Models
         public string Navn { get; set; }
         public string Adresse { get; set; }
         public int? TelefonNr { get; set; }
+        public List<Models.Project> Projects { get; set; }
     }
 }

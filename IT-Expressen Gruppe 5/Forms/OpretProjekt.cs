@@ -12,7 +12,7 @@ namespace IT_Expressen_Gruppe_5
 {
     public partial class OpretProjekt : Form
     {
-        public OpretProjekt()
+        public OpretProjekt(object NewProject, bool OpenNewProject)
         {
             InitializeComponent();
         }

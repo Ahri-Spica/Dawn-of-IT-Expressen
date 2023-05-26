@@ -16,19 +16,42 @@ namespace IT_Expressen_Gruppe_5.DAL
 
             var ALLDtoConsultant = dbc.Konsulent_s;
 
-            
+            var Consultant = new Models.Consultant();
+
+            Models.Consultant Consults = new Models.Consultant();
             foreach (var dto in ALLDtoConsultant)
             {
-                var Consultant = new Models.Consultant();
+                
 
                 Consultant.ConsultantID = dto.Konsulent_ID;
-                Consultant.SpecializationID = (int)dto.specifikationer_ID;
+                Consultant.TeknologiID = dto.Teknologi_ID;
+                Consultant.ConsultTypeID = dto.Konsulent_type_Id;
                 Consultant.Name = dto.Navn;
                 Consultant.Adress = dto.adresse;
                 Consultant.PhoneNr = dto.Tlf_nr;
                 Consultant.projects = new List<Models.Project>();
 
-                
+                // Fetch related projects for this consultant
+                var relatedProjects = dbc.Projekts.Where(p => p.Konsulent_ID == dto.Konsulent_ID);
+                Consultant.projects = new List<Models.Project>();
+                foreach (var dbProject in relatedProjects)
+                {
+                    var project = new Models.Project();
+                    project.ProjectID = dbProject.projekt_ID;
+                    project.CustomerID = (int)dbProject.Kunde_ID;
+                    project.Name = dbProject.Name;
+                    project.StartDate = (DateTime)dbProject.start_dato;
+                    project.EndDate = (DateTime)dbProject.slut_dato;
+                    project.Description = dbProject.Description;
+                    project.ProjectStatus = (int)dbProject.Projekt_status;
+                    project.HourlyRate = (int)dbProject.Timeopgørelse;
+                    project.ConsultantID = (int)dbProject.Konsulent_ID;
+                    project.ChatID = (int?)dbProject.Chat_Id;
+                    project.Requirements = (int?)dbProject.Krav_ID;
+
+                    Consultant.projects.Add(project);
+                }
+
                 result.Add(Consultant);
             }
             return result;
