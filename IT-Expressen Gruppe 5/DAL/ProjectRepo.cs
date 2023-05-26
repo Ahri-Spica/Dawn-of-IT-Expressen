@@ -17,8 +17,6 @@ namespace IT_Expressen_Gruppe_5.DAL
         //Henter alt data fra projekt table i DB
         public List<Models.Project> GetAllProjects()
         {
-            // Initialiserer en tom liste hvor til at gemme data
-            var result = new List<Models.Project>();
 
              // Henter data fra databasen linq to sql
            var ProjectData = dbc.Projekts;
