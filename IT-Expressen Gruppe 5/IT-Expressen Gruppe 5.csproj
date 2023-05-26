@@ -179,6 +179,9 @@
     <None Include="Database\SQL_DB.dbml.layout">
       <DependentUpon>SQL_DB.dbml</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\IT_Expressen_Gruppe_5.Models.Notification.datasource" />
+    <None Include="Properties\DataSources\IT_Expressen_Gruppe_5.Models.Project.datasource" />
+    <None Include="Properties\DataSources\IT_Expressen_Gruppe_5.Models.Projekt.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -215,6 +218,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\admin Billede.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

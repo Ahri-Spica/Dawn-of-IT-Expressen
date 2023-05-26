@@ -18,7 +18,7 @@ namespace IT_Expressen_Gruppe_5.Models
         private readonly SpecService spec_service;
         public Models.Project CustomerProject { get; set; }
 
-        public Projekt()
+        public Projekt(object openform, bool EditProject)
         {
             InitializeComponent();
             spec_service = new SpecService();

@@ -1,4 +1,5 @@
-﻿using IT_Expressen_Gruppe_5.Models;
+﻿using IT_Expressen_Gruppe_5.Database;
+using IT_Expressen_Gruppe_5.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -50,6 +51,7 @@ namespace IT_Expressen_Gruppe_5.DAL
                  .Select(HelperProject).ToList();
 
         }
+        //Her bliver der lavet en liste som indeholder aktive projekter - Jakob og Dannie
         public List<Models.Project> GetActiveProjectsToConsultant()
         {
             return dbc.Projekts
@@ -58,7 +60,10 @@ namespace IT_Expressen_Gruppe_5.DAL
                 .ToList();
         }
 
-        
+            dbc.Projekts.DeleteOnSubmit(targetProject);
+
+            dbc.SubmitChanges();
+        }
     }
 
        /* public List<Models.Consultant> GetAllConsultants()
@@ -71,31 +76,24 @@ namespace IT_Expressen_Gruppe_5.DAL
             foreach (var dto in ALLDtoItem)
             {
 
-                Consults.___ =
+            Consults.___ =
 
-                result.Add(Consults);
-            }
-            return result;
+            result.Add(Consults);
         }
+        return result;
+    }*/
 
-        public void DeleteConsultants(Models.Consultants dto)
-        {
-            var targetConsult = dbc.Konsulents.FirstOrDefault(x => x.Konsulent.Id == dto.__;
+    
+    /*
+    public void EditConsultants(Models.Consultant consultEdit)
+    {
+        //? Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
 
-            dbc.Konsulents.DeleteOnSubmit(targetConsult);
+        var targetConsult = dbc.Konsulents.FirstOrDefault(x => x.Konsulent.Id == ConsultEdit.Konsulent_Id);
 
-            dbc.SubmitChanges();
-        }
-
-        public void EditConsultants(Models.Consultant consultEdit)
-        {
-            //? Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
-
-            var targetConsult = dbc.Konsulents.FirstOrDefault(x => x.Konsulent.Id == ConsultEdit.Konsulent_Id);
-
-            targetConsult.Navn = consultEdit.Navn;
-            targetConsult.Adresse = consultEdit.Adresse;
-            targetConsult.TelefonNR = consultEdit.TelefonNr;
+        targetConsult.Navn = consultEdit.Navn;
+        targetConsult.Adresse = consultEdit.Adresse;
+        targetConsult.TelefonNR = consultEdit.TelefonNr;
 
             dbc.SubmitChanges();
         }*/

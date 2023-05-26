@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IT_Expressen_Gruppe_5.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,14 @@ namespace IT_Expressen_Gruppe_5.DAL
                 Kunder.Adresse = dto.adresse;
                 Kunder.TelefonNr = dto.Tlf_nr;
                 Kunder.Navn = dto.Navn;
+                Kunder.Projects = new List<Models.Project>();
+
+                var relatedProjects = dbc.Projekts.Where(p => p.Kunde_ID == dto.Kunde_ID);
+                Kunder.Projects = new List<Models.Project>();
+                foreach (var dtoPrject in relatedProjects)
+                {
+
+                }
 
                 result.Add(Kunder);
             }

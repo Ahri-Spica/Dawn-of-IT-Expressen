@@ -30,11 +30,17 @@ namespace IT_Expressen_Gruppe_5.Services
         public List<Models.Project> GetCompletedProjectsToConsultant()
         {
             return projectRepo.GetCompletedProjectsToConsultant();
+
         }
 
         public List<Models.Project> GetActiveProjectsToConsultant()
         {
             return projectRepo.GetActiveProjectsToConsultant();
+        }
+        public void DeleteProject(Models.Project MyProject)
+        {
+            var projectRepo = new DAL.ProjectRepo();
+            projectRepo.DeleteProject(MyProject);
         }
     }
 }
