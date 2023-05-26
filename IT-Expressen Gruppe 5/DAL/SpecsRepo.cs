@@ -18,9 +18,11 @@ namespace IT_Expressen_Gruppe_5.DAL
 
             var ALLDtoItemTech = dbc.Teknologis;
 
-            Models.Technologies technologies = new Models.Technologies();
+            
             foreach (var dto in ALLDtoItemTech)
-            {
+            {   
+                Models.Technologies technologies = new Models.Technologies();
+                
                 technologies.TechnologyID = dto.Teknologi_ID;
                 technologies.Technology = dto.Teknologi1;
 

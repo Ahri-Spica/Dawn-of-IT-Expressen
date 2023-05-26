@@ -33,7 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
@@ -51,8 +55,10 @@
     <Compile Include="DAL\AdminRepo.cs" />
     <Compile Include="DAL\ChatRepo.cs" />
     <Compile Include="DAL\ConsultantRepo.cs" />
+    <Compile Include="DAL\IDataConnection.cs" />
     <Compile Include="DAL\SpecsRepo.cs" />
     <Compile Include="DAL\ProjectRepo.cs" />
+    <Compile Include="DAL\SqlConnector.cs" />
     <Compile Include="Database\SQL_DB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,6 +100,7 @@
     <Compile Include="Forms\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalConfig.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Consultant.cs" />
@@ -172,6 +179,7 @@
     <None Include="Database\SQL_DB.dbml.layout">
       <DependentUpon>SQL_DB.dbml</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -17,10 +17,10 @@ namespace IT_Expressen_Gruppe_5.DAL
 
             var ALLDtoItemCu = dbc.Kundes;
             
-            Models.Customer Kunder = new Models.Customer();
+           
             foreach (var dto in ALLDtoItemCu)
             {
-
+                Models.Customer Kunder = new Models.Customer();
                 Kunder.KundeID = dto.Kunde_ID;
                 Kunder.Adresse = dto.adresse;
                 Kunder.TelefonNr = dto.Tlf_nr;
