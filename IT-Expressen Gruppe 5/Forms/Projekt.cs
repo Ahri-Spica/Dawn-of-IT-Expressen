@@ -1,4 +1,5 @@
 ﻿using IT_Expressen_Gruppe_5.DAL;
+using IT_Expressen_Gruppe_5.Database;
 using IT_Expressen_Gruppe_5.Services;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,13 @@ namespace IT_Expressen_Gruppe_5.Models
 {
     //Af Dannie
     public partial class Projekt : Form
-    {
+    {   CustomerRepo customerRepo = new CustomerRepo();
+        ConsultantRepo consultantRepo = new ConsultantRepo();
+        ProjectRepo projectRepo = new ProjectRepo();    
         private readonly SpecService spec_service;
         public Models.Project CustomerProject { get; set; }
-
+        
+       
         public Projekt(object openform, bool EditProject)
         {
             InitializeComponent();
@@ -41,17 +45,10 @@ namespace IT_Expressen_Gruppe_5.Models
         }
         private void UpdateProjectOnUI()
         { 
-            //ConsultantRepo consultantRepo = new ConsultantRepo();
-           //dgv_konsulenter.DataSource = consultantRepo.GetAllConsultants();
+            
+           dgv_konsulenter.DataSource = consultantRepo.GetAllConsultants();
 
-
-
-            ProjectRepo projectRepo = new ProjectRepo();
-            dgv_konsulenter.DataSource = projectRepo.GetCompletedProjectsToConsultant();
-
-
-            //tb_ProjektName.Text = CustomerProject.Name;
-
+            
 
         }
         private void LoadCustomerProject()

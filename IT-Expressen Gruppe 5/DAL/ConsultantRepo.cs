@@ -16,16 +16,14 @@ namespace IT_Expressen_Gruppe_5.DAL
 
             var ALLDtoConsultant = dbc.Konsulent_s;
 
-            var Consultant = new Models.Consultant();
-
-            Models.Consultant Consults = new Models.Consultant();
+            
             foreach (var dto in ALLDtoConsultant)
             {
-                
+                Models.Consultant Consultant = new Models.Consultant();
 
                 Consultant.ConsultantID = dto.Konsulent_ID;
-                Consultant.TeknologiID = dto.Teknologi_ID;
-                Consultant.ConsultTypeID = dto.Konsulent_type_Id;
+                //Consultant.TeknologiID = dto.teknolgi;
+                //Consultant.ConsultTypeID = dto.Konsulent_type_Id;
                 Consultant.Name = dto.Navn;
                 Consultant.Adress = dto.adresse;
                 Consultant.PhoneNr = dto.Tlf_nr;
@@ -43,7 +41,7 @@ namespace IT_Expressen_Gruppe_5.DAL
                     project.StartDate = (DateTime)dbProject.start_dato;
                     project.EndDate = (DateTime)dbProject.slut_dato;
                     project.Description = dbProject.Description;
-                    project.ProjectStatus = (int)dbProject.Projekt_status;
+                    project.ProjectStatus = (int?)dbProject.Projekt_status;
                     project.HourlyRate = (int)dbProject.Timeopgørelse;
                     project.ConsultantID = (int)dbProject.Konsulent_ID;
                     project.ChatID = (int?)dbProject.Chat_Id;
