@@ -14,16 +14,20 @@ using System.Windows.Forms;
 
 namespace IT_Expressen_Gruppe_5
 {
+    // Af Dannie
     public partial class OpretProjekt : Form
     {
         private readonly SpecService spec_service;
         public Models.Projekt creatProjekt { get; set; }
+
         Database.SQL_DBDataContext dbc = new Database.SQL_DBDataContext();
+
         public OpretProjekt()
         {
             InitializeComponent();
             spec_service = new SpecService();
         }
+
 
         private void OpretProjekt_Load(object sender, EventArgs e)
         {

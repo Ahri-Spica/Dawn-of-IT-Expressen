@@ -11,35 +11,48 @@ namespace IT_Expressen_Gruppe_5.Services
     // AF Dannie
     public class ProjectServices
     {
-     //instance af DAL.projectRepo
+        //instance af DAL.projectRepo
+        private DAL.ProjectRepoConsultan projectRepoConsultan;
         private DAL.ProjectRepo projectRepo;
-   
-        //constructer-bliver kaldt når et nyt objekt af klassen bliver lavet
-        //Inde i constructer laves en ny instance af DAL.ProjectRepo
-  
+
+        //Constructer der tager Consulent            
+        public ProjectServices(Models.Consultant consultant)
+        {
+            projectRepo = new DAL.ProjectRepoConsultan(consultant);
+        }
+        
+        //En constructer uden parameter
         public ProjectServices()
         {
             projectRepo = new DAL.ProjectRepo();
         }
-        
         public List<Models.Project> GetAllProjects()
         {
             return projectRepo.GetAllProjects();
         }
 
+        public List<Models.Project> GetAllActiveProjects()
+        {
+            return projectRepo.GetAllActiveProjects();
+        }
+
+        public List<Models.Project> GetAllCompletedProjects()
+        {
+            return projectRepo.GetAllCompletedProjects();
+        }
         public List<Models.Project> GetCompletedProjectsToConsultant()
         {
-            return projectRepo.GetCompletedProjectsToConsultant();
+            return projectRepoConsultan.GetCompletedProjectsToConsultant();
 
         }
 
         public List<Models.Project> GetActiveProjectsToConsultant()
         {
-            return projectRepo.GetActiveProjectsToConsultant();
+            return projectRepoConsultan.GetActiveProjectsToConsultant();
         }
         public void DeleteProject(Models.Project MyProject)
         {
-            var projectRepo = new DAL.ProjectRepo();
+            
             projectRepo.DeleteProject(MyProject);
         }
     }

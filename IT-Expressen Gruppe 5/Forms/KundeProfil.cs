@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace IT_Expressen_Gruppe_5.Forms
 {
+    //af dannie
     public partial class KundeProfil : Form
     {
         public KundeProfil()
         {
             InitializeComponent();
+        }
+
+        private void KundeProfil_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

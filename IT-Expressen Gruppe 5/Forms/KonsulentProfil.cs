@@ -1,4 +1,5 @@
-﻿using IT_Expressen_Gruppe_5.Models;
+﻿using IT_Expressen_Gruppe_5.DAL;
+using IT_Expressen_Gruppe_5.Models;
 using IT_Expressen_Gruppe_5.Services;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace IT_Expressen_Gruppe_5.Forms
     // Af Jakob
     public partial class KonsulentProfil : Form
     {
+        private ProjectRepo projectRepo;
         private List<Models.Project> MyActiveProjects;
         private List<Models.Project> MyCompletedProjects;
         private Models.Consultant MyConsultant;
@@ -22,7 +24,6 @@ namespace IT_Expressen_Gruppe_5.Forms
 
         public KonsulentProfil()
         {
-            
             InitializeComponent();
         }
         public void UpdateProjectOnUI()
@@ -32,12 +33,13 @@ namespace IT_Expressen_Gruppe_5.Forms
             dgv_AProjects.Refresh();
             dgv_FProjects.Refresh();
         }
-        public void LoadProjectData() 
+        public void LoadProjectData()
         {
-            var ProjectService = new Services.ProjectServices();
+
+            var ProjectService = new Services.ProjectServices(MyConsultant);
             MyActiveProjects = ProjectService.GetActiveProjectsToConsultant().ToList();
             MyCompletedProjects = ProjectService.GetCompletedProjectsToConsultant().ToList();
-            
+
         }
         public void LoadConsultData()
         {
@@ -75,7 +77,7 @@ namespace IT_Expressen_Gruppe_5.Forms
         }
         private void OpenEditProjectFormDgvA()
         {
-            Models.Project SelectedProject = (Models.Project)dgv_AProjects.SelectedRows[0].DataBoundItem; 
+            Models.Project SelectedProject = (Models.Project)dgv_AProjects.SelectedRows[0].DataBoundItem;
 
             if (SelectedProject == null)
             {
@@ -106,7 +108,7 @@ namespace IT_Expressen_Gruppe_5.Forms
                 throw new NullReferenceException("SelectedCustomer was null");
             }
 
-            Services.ProjectServices deleteProject = new Services.ProjectServices();
+            Services.ProjectServices deleteProject = new Services.ProjectServices(MyConsultant);
             deleteProject.DeleteProject(SelectedProject);
         }
         private void DeleteProjectDgvF()
@@ -118,13 +120,16 @@ namespace IT_Expressen_Gruppe_5.Forms
                 throw new NullReferenceException("SelectedCustomer was null");
             }
 
-            Services.ProjectServices deleteProject = new Services.ProjectServices();
+            Services.ProjectServices deleteProject = new Services.ProjectServices(MyConsultant);
             deleteProject.DeleteProject(SelectedProject);
         }
         private void OpenAddProjectForm()
         {
+            //Models.Project NewProject = new Models.Project();
+            //OpretProjekt AddProject = new OpretProjekt(NewProject, true);
+            //AddProject.ShowDialog();
             Models.Project NewProject = new Models.Project();
-            OpretProjekt AddProject = new OpretProjekt(NewProject, true);
+            OpretProjekt AddProject = new OpretProjekt();
             AddProject.ShowDialog();
         }
 
@@ -145,19 +150,20 @@ namespace IT_Expressen_Gruppe_5.Forms
 
         private void KonsulentProfil_Load_1(object sender, EventArgs e)
         {
-            //MyConsultant.ConsultantID = 3;
-            //Consultant consultant = new Consultant();
-            //consultant.ConsultantID = 3;
-            //consultant.PhoneNr = 23232323;
-            //consultant.Adress = "Adresse";
-            //consultant.Name = "Jakob Stephensen";
 
-            //this.MyConsultant = consultant;
+            Consultant consultant = new Consultant();
+            consultant.ConsultantID = 3;
+            consultant.PhoneNr = 23232323;
+            consultant.Adress = "Adresse";
+            consultant.Name = "Jakob Stephensen";
 
+            this.MyConsultant = consultant;
+            projectRepo = new ProjectRepo();
             LoadConsultData();
             LoadProjectData();
             UpdateProjectOnUI();
         }
+
 
         private void bt_save_Click_1(object sender, EventArgs e)
         {
